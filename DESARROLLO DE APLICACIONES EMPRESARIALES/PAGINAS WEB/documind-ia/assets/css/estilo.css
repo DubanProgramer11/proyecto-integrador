@@ -831,3 +831,49 @@ a { text-decoration: none; color: inherit; }
 
 .rol-admin { background: rgba(30,90,168,0.1); color: var(--azul); }
 .rol-usuario { background: rgba(107,118,128,0.1); color: #6B7680; }
+
+/* ===== REDISEÑO: ilustración del hero ===== */
+.hero-ilustracion {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    aspect-ratio: 1 / 0.85;
+}
+
+/* ===== REDISEÑO: chips de características bajo el hero ===== */
+.chips-caracteristicas {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-top: 56px;
+    padding-top: 40px;
+    border-top: 1px solid var(--borde);
+}
+
+.chip-caracteristica {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+}
+
+.chip-icono {
+    width: 46px;
+    height: 46px;
+    border-radius: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chip-caracteristica span {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--texto-medio);
+    line-height: 1.35;
+}
+
+@media (max-width: 760px) {
+    .chips-caracteristicas { grid-template-columns: 1fr 1fr; }
+}

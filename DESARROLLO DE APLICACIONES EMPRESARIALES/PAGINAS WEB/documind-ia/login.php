@@ -2,7 +2,7 @@
 // login.php
 // Formulario de inicio de sesión
 require_once __DIR__ . "/config/conexion.php";
-session_start(); // inicia (o reanuda) la sesión de PHP para poder guardar quién inició sesión
+session_start();
 
 $error = "";
 $exito = "";
@@ -24,9 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $resultado = mysqli_stmt_get_result($consulta);
         $usuario = mysqli_fetch_assoc($resultado);
 
-        // password_verify compara la contraseña escrita con el hash guardado
         if ($usuario && password_verify($contrasena, $usuario["contrasena"])) {
-            // Guardamos los datos del usuario en la sesión para usarlos en otras páginas
             $_SESSION["id_usuario"] = $usuario["id"];
             $_SESSION["nombre_usuario"] = $usuario["nombre"];
             $_SESSION["rol_usuario"] = $usuario["rol"];
@@ -54,20 +52,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <header class="navbar">
         <div class="contenedor navbar-contenido">
             <a href="index.php" class="marca">
-                <svg class="logo-icono" width="38" height="38" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="8" y="4" width="26" height="34" rx="3" fill="url(#gradDoc3)"/>
-                    <line x1="13" y1="14" x2="29" y2="14" stroke="white" stroke-width="1.6" stroke-linecap="round" opacity="0.85"/>
-                    <line x1="13" y1="19" x2="29" y2="19" stroke="white" stroke-width="1.6" stroke-linecap="round" opacity="0.85"/>
-                    <line x1="13" y1="24" x2="24" y2="24" stroke="white" stroke-width="1.6" stroke-linecap="round" opacity="0.85"/>
-                    <path d="M34 26 L37.2 32.4 L44 34.6 L37.2 36.8 L34 43.2 L30.8 36.8 L24 34.6 L30.8 32.4 Z" fill="url(#gradSpark3)"/>
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="40" height="40" rx="11" fill="url(#gradChip2)"/>
+                    <rect x="11" y="8" width="16" height="22" rx="2.5" fill="white" opacity="0.97"/>
+                    <rect x="14" y="13.5" width="10" height="1.8" rx="0.9" fill="#1E5AA8"/>
+                    <rect x="14" y="17.5" width="10" height="1.8" rx="0.9" fill="#1E5AA8"/>
+                    <rect x="14" y="21.5" width="6" height="1.8" rx="0.9" fill="#1B8A6B"/>
+                    <circle cx="28" cy="27" r="7" fill="#2FBE8F"/>
+                    <path d="M28 23.8 L29.1 26.4 L31.7 27 L29.1 27.6 L28 30.2 L26.9 27.6 L24.3 27 L26.9 26.4 Z" fill="white"/>
                     <defs>
-                        <linearGradient id="gradDoc3" x1="8" y1="4" x2="34" y2="38" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#1E5AA8"/>
-                            <stop offset="1" stop-color="#1B8A6B"/>
-                        </linearGradient>
-                        <linearGradient id="gradSpark3" x1="24" y1="26" x2="44" y2="43" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#2FBE8F"/>
-                            <stop offset="1" stop-color="#1E8FD1"/>
+                        <linearGradient id="gradChip2" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#1E5AA8"/><stop offset="1" stop-color="#1B8A6B"/>
                         </linearGradient>
                     </defs>
                 </svg>
@@ -78,8 +73,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     <div class="auth-envoltorio">
         <div class="auth-tarjeta">
-            <h1 class="auth-titulo">Inicia sesión</h1>
-            <p class="auth-subtitulo">Accede a tu repositorio de documentos</p>
+            <h1 class="auth-titulo">Iniciar sesión</h1>
+            <p class="auth-subtitulo">Ingresa a tu cuenta para continuar</p>
 
             <?php if ($error): ?>
                 <div class="mensaje mensaje-error"><?php echo htmlspecialchars($error); ?></div>
@@ -91,16 +86,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <form method="POST" action="login.php">
                 <div class="campo">
                     <label for="correo">Correo electrónico</label>
-                    <input type="email" id="correo" name="correo" required>
+                    <input type="email" id="correo" name="correo" placeholder="tuusuario@ejemplo.com" required>
                 </div>
                 <div class="campo">
                     <label for="contrasena">Contraseña</label>
                     <input type="password" id="contrasena" name="contrasena" required>
                 </div>
-                <button type="submit" class="btn btn-lleno auth-boton">Entrar</button>
+                <button type="submit" class="btn btn-lleno auth-boton">Iniciar sesión</button>
             </form>
 
-            <p class="auth-pie">¿No tienes cuenta? <a href="registro.php">Regístrate</a></p>
+            <p class="auth-pie">¿No tienes una cuenta? <a href="registro.php">Regístrate</a></p>
         </div>
     </div>
 

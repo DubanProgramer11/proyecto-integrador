@@ -19,20 +19,17 @@ require_once __DIR__ . "/config/conexion.php";
     <header class="navbar">
         <div class="contenedor navbar-contenido">
             <div class="marca">
-                <svg class="logo-icono" width="38" height="38" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="8" y="4" width="26" height="34" rx="3" fill="url(#gradDoc)"/>
-                    <line x1="13" y1="14" x2="29" y2="14" stroke="white" stroke-width="1.6" stroke-linecap="round" opacity="0.85"/>
-                    <line x1="13" y1="19" x2="29" y2="19" stroke="white" stroke-width="1.6" stroke-linecap="round" opacity="0.85"/>
-                    <line x1="13" y1="24" x2="24" y2="24" stroke="white" stroke-width="1.6" stroke-linecap="round" opacity="0.85"/>
-                    <path d="M34 26 L37.2 32.4 L44 34.6 L37.2 36.8 L34 43.2 L30.8 36.8 L24 34.6 L30.8 32.4 Z" fill="url(#gradSpark)"/>
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="40" height="40" rx="11" fill="url(#gradChip1)"/>
+                    <rect x="11" y="8" width="16" height="22" rx="2.5" fill="white" opacity="0.97"/>
+                    <rect x="14" y="13.5" width="10" height="1.8" rx="0.9" fill="#1E5AA8"/>
+                    <rect x="14" y="17.5" width="10" height="1.8" rx="0.9" fill="#1E5AA8"/>
+                    <rect x="14" y="21.5" width="6" height="1.8" rx="0.9" fill="#1B8A6B"/>
+                    <circle cx="28" cy="27" r="7" fill="#2FBE8F"/>
+                    <path d="M28 23.8 L29.1 26.4 L31.7 27 L29.1 27.6 L28 30.2 L26.9 27.6 L24.3 27 L26.9 26.4 Z" fill="white"/>
                     <defs>
-                        <linearGradient id="gradDoc" x1="8" y1="4" x2="34" y2="38" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#1E5AA8"/>
-                            <stop offset="1" stop-color="#1B8A6B"/>
-                        </linearGradient>
-                        <linearGradient id="gradSpark" x1="24" y1="26" x2="44" y2="43" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#2FBE8F"/>
-                            <stop offset="1" stop-color="#1E8FD1"/>
+                        <linearGradient id="gradChip1" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#1E5AA8"/><stop offset="1" stop-color="#1B8A6B"/>
                         </linearGradient>
                     </defs>
                 </svg>
@@ -52,38 +49,87 @@ require_once __DIR__ . "/config/conexion.php";
         <div class="contenedor hero-contenido">
             <div class="hero-texto">
                 <span class="etiqueta">Sistema Inteligente de Gestión Documental</span>
-                <h1>Convierte tu repositorio de archivos en <span class="resaltado">conocimiento consultable</span></h1>
+                <h1>Tus documentos, <span class="resaltado">mejor organizados</span> con Inteligencia Artificial</h1>
                 <p class="hero-parrafo">
-                    DocuMind IA organiza, clasifica, resume y responde preguntas sobre tus documentos
-                    PDF, Word y de texto, usando inteligencia artificial en cada paso del proceso.
+                    DocuMind IA te permite almacenar, clasificar y analizar tus documentos
+                    con el poder de la IA, en un flujo continuo: del archivo a la respuesta.
                 </p>
                 <div class="hero-botones">
-                    <a href="registro.php" class="btn btn-lleno btn-grande">Comenzar ahora</a>
-                    <a href="#como-funciona" class="btn btn-texto">Ver cómo funciona →</a>
+                    <a href="registro.php" class="btn btn-lleno btn-grande">Registrarse</a>
+                    <a href="login.php" class="btn btn-outline btn-grande">Iniciar sesión</a>
                 </div>
             </div>
+
             <div class="hero-panel">
-                <div class="panel-tarjeta">
-                    <div class="panel-fila">
-                        <span class="punto punto-verde"></span>
-                        <span>contrato_arrendamiento.pdf</span>
-                        <span class="estado estado-listo">Procesado</span>
+                <svg class="hero-ilustracion" viewBox="0 0 380 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="190" cy="160" r="150" fill="#EAF1FA"/>
+                    <circle cx="60" cy="70" r="34" fill="#E9F7F1"/>
+                    <circle cx="330" cy="250" r="26" fill="#EAF1FA"/>
+
+                    <!-- Conectores -->
+                    <path d="M96 110 Q150 140 168 150" stroke="#C9D9EC" stroke-width="2.5" stroke-dasharray="5,6" fill="none"/>
+                    <path d="M96 190 Q150 175 168 165" stroke="#C9D9EC" stroke-width="2.5" stroke-dasharray="5,6" fill="none"/>
+                    <path d="M120 250 Q155 220 172 185" stroke="#C9D9EC" stroke-width="2.5" stroke-dasharray="5,6" fill="none"/>
+
+                    <!-- Archivo PDF -->
+                    <rect x="58" y="86" width="56" height="56" rx="16" fill="#D64545"/>
+                    <rect x="76" y="103" width="20" height="24" rx="3" fill="white"/>
+                    <text x="86" y="119" text-anchor="middle" font-family="Poppins, sans-serif" font-size="7" font-weight="700" fill="#D64545">PDF</text>
+
+                    <!-- Archivo DOCX -->
+                    <rect x="52" y="168" width="56" height="56" rx="16" fill="#2E5CA8"/>
+                    <rect x="70" y="185" width="20" height="24" rx="3" fill="white"/>
+                    <text x="80" y="201" text-anchor="middle" font-family="Poppins, sans-serif" font-size="6.3" font-weight="700" fill="#2E5CA8">DOCX</text>
+
+                    <!-- Archivo TXT -->
+                    <rect x="96" y="228" width="52" height="52" rx="15" fill="#5C6B75"/>
+                    <rect x="112" y="244" width="20" height="22" rx="3" fill="white"/>
+                    <text x="122" y="259" text-anchor="middle" font-family="Poppins, sans-serif" font-size="6.6" font-weight="700" fill="#5C6B75">TXT</text>
+
+                    <!-- Nodo central IA -->
+                    <circle cx="230" cy="165" r="62" fill="url(#gradNodo)"/>
+                    <circle cx="230" cy="165" r="62" fill="none" stroke="white" stroke-width="4"/>
+                    <rect x="205" y="142" width="22" height="30" rx="4" fill="white" opacity="0.95"/>
+                    <rect x="211" y="150" width="10" height="2.2" rx="1.1" fill="#1E5AA8"/>
+                    <rect x="211" y="156" width="10" height="2.2" rx="1.1" fill="#1E5AA8"/>
+                    <path d="M246 148 L249 155 L256 157.5 L249 160 L246 167 L243 160 L236 157.5 L243 155 Z" fill="white"/>
+                    <text x="230" y="200" text-anchor="middle" font-family="Poppins, sans-serif" font-size="12" font-weight="700" fill="white">IA</text>
+
+                    <defs>
+                        <linearGradient id="gradNodo" x1="168" y1="103" x2="292" y2="227" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#1E5AA8"/>
+                            <stop offset="1" stop-color="#1B8A6B"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+        </div>
+
+        <div class="contenedor">
+            <div class="chips-caracteristicas">
+                <div class="chip-caracteristica">
+                    <div class="chip-icono icono-azul">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h10M4 18h7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
                     </div>
-                    <div class="panel-fila">
-                        <span class="punto punto-azul"></span>
-                        <span>factura_0231.docx</span>
-                        <span class="estado estado-proceso">Analizando</span>
+                    <span>Clasificación automática de documentos</span>
+                </div>
+                <div class="chip-caracteristica">
+                    <div class="chip-icono icono-verde">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3v10m0 0l-3.5-3.5M12 13l3.5-3.5M5 21h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </div>
-                    <div class="panel-fila">
-                        <span class="punto punto-verde"></span>
-                        <span>informe_trimestral.txt</span>
-                        <span class="estado estado-listo">Procesado</span>
+                    <span>Resumen de contenido con IA</span>
+                </div>
+                <div class="chip-caracteristica">
+                    <div class="chip-icono icono-azul">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
                     </div>
-                    <div class="panel-divisor"></div>
-                    <div class="panel-pregunta">
-                        <span class="panel-pregunta-etiqueta">Consulta en lenguaje natural</span>
-                        <p>"¿Cuál es el valor total facturado este mes?"</p>
+                    <span>Extracción de entidades y datos clave</span>
+                </div>
+                <div class="chip-caracteristica">
+                    <div class="chip-icono icono-verde">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2L3 6v6c0 5 3.8 9 9 10 5.2-1 9-5 9-10V6l-9-4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
                     </div>
+                    <span>Gestión segura de repositorios</span>
                 </div>
             </div>
         </div>
