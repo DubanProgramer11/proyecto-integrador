@@ -1,0 +1,11 @@
+# Configuración local
+backend/config/config.php
+backend/config/database.php
+
+# Archivos subidos por usuarios
+uploads/*
+!uploads/.gitkeep
+
+# Sistema
+.DS_Store
+Thumbs.db

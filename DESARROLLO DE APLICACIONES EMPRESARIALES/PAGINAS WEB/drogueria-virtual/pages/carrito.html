@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi carrito - VitalFarma</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <link rel="stylesheet" href="../css/carrito.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="contenedor header__contenido">
+      <a href="../../index.html" class="header__logo">
+        <span class="header__logo-marca"><i class="bi bi-plus-lg"></i></span>
+        <span class="header__logo-texto">Vital<span>Farma</span></span>
+      </a>
+
+      <div class="header__buscador">
+        <i class="bi bi-search header__buscador-icono"></i>
+        <input type="text" data-i18n="buscar_placeholder" placeholder="Buscar productos, marcas, categorías...">
+      </div>
+
+      <div class="header__acciones">
+        <!-- Sin data-i18n: main.js reemplaza el contenido con la inicial del usuario -->
+        <a href="../../login.html" class="header__icono" id="headerCuenta"
+           data-i18n-title="mi_cuenta" title="Mi cuenta"><i class="bi bi-person"></i></a>
+        <!-- Sin data-i18n: contiene el contador del carrito -->
+        <a href="../../pages/carrito.html" class="header__icono"
+           data-i18n-title="carrito" title="Carrito">
+          <i class="bi bi-bag"></i>
+          <span class="header__carrito-contador">0</span>
+        </a>
+        <button class="header__menu-toggle" id="menuToggle"><i class="bi bi-list"></i></button>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <div class="contenedor">
+        <ul class="nav__lista" id="navLista">
+          <li><a href="catalogo.html" class="nav__link" data-i18n="nav_medicamentos">Medicamentos</a></li>
+          <li><a href="catalogo.html" class="nav__link" data-i18n="nav_cuidado_personal">Cuidado personal</a></li>
+          <li><a href="catalogo.html" class="nav__link" data-i18n="nav_vitaminas">Vitaminas</a></li>
+          <li><a href="catalogo.html" class="nav__link" data-i18n="nav_higiene">Higiene</a></li>
+          <li><a href="catalogo.html" class="nav__link" data-i18n="nav_bebes">Bebés</a></li>
+          <li><a href="catalogo.html" class="nav__link" data-i18n="nav_primeros_auxilios">Primeros auxilios</a></li>
+          <li><a href="orden-medica.html" class="nav__link" data-i18n="subir_orden">Subir orden médica</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- CARRITO -->
+  <section class="seccion">
+    <div class="contenedor">
+      <div class="carrito-lista__cabecera">
+        <h1 data-i18n="mi_carrito">Mi carrito</h1>
+        <button class="btn btn-secundario" id="carritoVaciar" data-i18n="vaciar_carrito">Vaciar carrito</button>
+      </div>
+
+      <div class="carrito-layout">
+
+        <!-- LISTA DE PRODUCTOS -->
+        <div>
+          <div class="carrito-lista" id="carritoLista"></div>
+
+          <div class="carrito-vacio" id="carritoVacio">
+            <div class="carrito-vacio__icono">🛒</div>
+            <h2 data-i18n="carrito_vacio">Tu carrito está vacío</h2>
+            <p data-i18n="carrito_vacio_texto">Agrega productos desde el catálogo para verlos aquí.</p>
+            <a href="catalogo.html" class="btn btn-primario" data-i18n="ir_al_catalogo">Ir al catálogo</a>
+          </div>
+        </div>
+
+        <!-- RESUMEN -->
+        <aside class="carrito-resumen" id="carritoResumen">
+          <h3 class="carrito-resumen__titulo" data-i18n="resumen_pedido">Resumen del pedido</h3>
+
+          <!-- Sin data-i18n: el texto lo escribe carrito.js -->
+          <div class="carrito-resumen__aviso" id="carritoAvisoEnvio"></div>
+
+          <div class="carrito-resumen__fila">
+            <span data-i18n="subtotal">Subtotal</span>
+            <span id="carritoSubtotal">$ 0</span>
+          </div>
+          <div class="carrito-resumen__fila">
+            <span data-i18n="domicilio">Domicilio</span>
+            <span id="carritoDomicilio">$ 0</span>
+          </div>
+
+          <hr class="carrito-resumen__divisor">
+
+          <div class="carrito-resumen__total">
+            <span data-i18n="total">Total</span>
+            <span id="carritoTotal">$ 0</span>
+          </div>
+
+          <a href="checkout.html" class="btn btn-acento" data-i18n="proceder_pedido">Proceder al pedido</a>
+          <a href="catalogo.html" class="carrito-resumen__seguir" data-i18n="carrito_seguir">← Seguir comprando</a>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CHATBOT FLOTANTE -->
+  <a href="chatbot.html" class="chatbot-flotante"
+     data-i18n-title="chatbot_flotante_title" title="Habla con nuestro asistente">💬</a>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="contenedor">
+      <div class="footer__grid">
+        <div>
+          <h3 class="footer__titulo">VitalFarma</h3>
+          <p style="font-size:0.9rem; color:#D1D5DB;" data-i18n="footer_tagline">Tu droguería virtual de confianza.</p>
+        </div>
+        <div>
+          <h3 class="footer__titulo" data-i18n="footer_enlaces">Enlaces</h3>
+          <ul class="footer__lista">
+            <li><a href="catalogo.html" data-i18n="catalogo">Catálogo</a></li>
+            <li><a href="nosotros.html" data-i18n="footer_nosotros">Nosotros</a></li>
+            <li><a href="contacto.html" data-i18n="footer_contacto">Contacto</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer__titulo" data-i18n="mi_cuenta">Mi cuenta</h3>
+          <ul class="footer__lista">
+            <li><a href="../login.html" data-i18n="iniciar_sesion">Iniciar sesión</a></li>
+            <li><a href="../registro.html" data-i18n="footer_crear_cuenta">Crear cuenta</a></li>
+            <li><a href="../user/pages/pedidos.html" data-i18n="mis_pedidos">Mis pedidos</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer__titulo" data-i18n="footer_contacto">Contacto</h3>
+          <ul class="footer__lista">
+            <li>info@vitalfarma.com</li>
+            <li>+57 300 000 0000</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom" data-i18n="footer_derechos">
+        &copy; 2026 VitalFarma. Todos los derechos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/api.js"></script>
+  <script src="../js/idioma.js"></script>
+  <script src="../js/carrito.js"></script>
+  <script src="../js/productos.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/chatbot.js"></script>
+</body>
+</html>

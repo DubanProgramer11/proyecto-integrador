@@ -1,0 +1,227 @@
+/* ============================================================
+   LOGIN ADMINISTRATIVO
+   Imagen de fondo a pantalla completa con la tarjeta centrada.
+   ============================================================ */
+
+.alogin-fondo {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--espacio-xl) var(--espacio-md);
+  background-image: url('../../images/fondo.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* Velo oscuro con tinte de marca: sin esto el texto de la tarjeta
+   pelearía con la foto y el conjunto se vería sucio. */
+.alogin-fondo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(6, 78, 75, 0.82) 0%, rgba(17, 24, 39, 0.78) 100%);
+}
+
+/* ===== TARJETA ===== */
+.alogin-tarjeta {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 410px;
+  background: #fff;
+  border-radius: var(--radio-lg);
+  padding: var(--espacio-2xl) var(--espacio-xl);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+  animation: aloginEntrada 0.35s ease-out;
+}
+
+@keyframes aloginEntrada {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== LOGO ===== */
+.alogin-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  margin-bottom: var(--espacio-lg);
+}
+
+.alogin-logo__marca {
+  width: 44px;
+  height: 44px;
+  border-radius: 13px;
+  background: linear-gradient(135deg, var(--color-primario) 0%, var(--color-primario-oscuro) 100%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.45rem;
+  box-shadow: 0 4px 12px rgba(11, 122, 117, 0.3);
+}
+
+.alogin-logo__texto {
+  font-family: var(--fuente-titulos);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primario);
+  line-height: 1;
+}
+
+.alogin-logo__texto span { color: var(--color-acento); }
+
+.alogin-logo__badge {
+  align-self: flex-start;
+  background: var(--color-texto);
+  color: #fff;
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  padding: 3px 7px;
+  border-radius: 5px;
+  margin-top: 2px;
+}
+
+/* ===== TEXTOS ===== */
+.alogin-titulo {
+  text-align: center;
+  font-size: 1.3rem;
+  margin-bottom: 5px;
+}
+
+.alogin-subtitulo {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--color-texto-suave);
+  margin-bottom: var(--espacio-xl);
+}
+
+/* ===== MENSAJES ===== */
+.alogin-mensaje {
+  display: none;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 14px;
+  border-radius: var(--radio-sm);
+  font-size: 0.84rem;
+  margin-bottom: var(--espacio-md);
+  background: #FEE2E2;
+  color: var(--color-error);
+}
+
+.alogin-mensaje--visible { display: flex; }
+
+.alogin-mensaje--exito {
+  background: #DCFCE7;
+  color: var(--color-exito);
+}
+
+/* ===== CAMPOS ===== */
+.alogin-campo { margin-bottom: var(--espacio-md); }
+
+.alogin-campo label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.alogin-campo__control {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.alogin-campo__icono {
+  position: absolute;
+  left: 14px;
+  color: var(--color-texto-suave);
+  font-size: 1rem;
+  pointer-events: none;
+}
+
+.alogin-campo input {
+  width: 100%;
+  padding: 12px 44px 12px 42px;
+  border: 1.5px solid var(--color-borde);
+  border-radius: var(--radio-md);
+  font-family: inherit;
+  font-size: 0.92rem;
+  background: var(--color-fondo-alterno);
+  transition: border-color 0.18s ease, background 0.18s ease;
+}
+
+.alogin-campo input:focus {
+  outline: none;
+  border-color: var(--color-primario);
+  background: #fff;
+}
+
+.alogin-campo__ver {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  color: var(--color-texto-suave);
+  padding: 6px;
+}
+
+.alogin-campo__ver:hover { color: var(--color-texto); }
+
+/* ===== BOTÓN ===== */
+.alogin-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px;
+  margin-top: var(--espacio-sm);
+  border-radius: var(--radio-md);
+  background: var(--color-primario);
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.93rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.18s ease;
+}
+
+.alogin-btn:hover:not(:disabled) { background: var(--color-primario-oscuro); }
+.alogin-btn:disabled { opacity: 0.65; cursor: not-allowed; }
+
+/* ===== PIE ===== */
+.alogin-pie {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--color-texto-suave);
+  margin-top: var(--espacio-lg);
+  padding-top: var(--espacio-md);
+  border-top: 1px solid var(--color-borde);
+}
+
+.alogin-pie a { color: var(--color-primario); font-weight: 600; }
+
+.alogin-aviso {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  font-size: 0.74rem;
+  color: var(--color-texto-suave);
+  margin-top: var(--espacio-md);
+}
+
+@media (max-width: 480px) {
+  .alogin-tarjeta { padding: var(--espacio-xl) var(--espacio-lg); }
+  /* fixed se comporta mal en móviles: la imagen salta al hacer scroll */
+  .alogin-fondo { background-attachment: scroll; }
+}

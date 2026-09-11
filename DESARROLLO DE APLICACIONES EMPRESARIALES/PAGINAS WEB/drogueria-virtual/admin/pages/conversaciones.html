@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conversaciones - Panel Administrativo VitalFarma</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/main.css">
+  <link rel="stylesheet" href="../css/admin.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/conversaciones.css">
+</head>
+<body class="admin-body">
+
+  <!-- admin.js inserta aquí el menú lateral -->
+  <div class="admin-layout">
+
+    <div>
+      <header class="admin-topbar">
+        <h1 class="admin-topbar__titulo">Conversaciones</h1>
+        <div class="admin-topbar__usuario">
+          <div>
+            <div id="adminNombre" style="font-weight:600;">Cargando...</div>
+            <span class="admin-topbar__rol" id="adminRol"></span>
+          </div>
+          <div class="admin-topbar__avatar" id="adminAvatar">A</div>
+        </div>
+      </header>
+
+      <main class="admin-contenido">
+
+        <!-- MÉTRICAS -->
+        <div class="admin-stats-grid">
+          <div class="admin-stat-card">
+            <div class="admin-stat-card__icono admin-stat-card__icono--teal"><i class="bi bi-chat-dots"></i></div>
+            <div>
+              <div class="admin-stat-card__valor" id="statTotal">0</div>
+              <div class="admin-stat-card__etiqueta">Conversaciones totales</div>
+            </div>
+          </div>
+          <div class="admin-stat-card">
+            <div class="admin-stat-card__icono admin-stat-card__icono--verde"><i class="bi bi-chat-left-dots"></i></div>
+            <div>
+              <div class="admin-stat-card__valor" id="statAbiertas">0</div>
+              <div class="admin-stat-card__etiqueta">Abiertas</div>
+            </div>
+          </div>
+          <div class="admin-stat-card">
+            <div class="admin-stat-card__icono admin-stat-card__icono--naranja"><i class="bi bi-person-raised-hand"></i></div>
+            <div>
+              <div class="admin-stat-card__valor" id="statEscaladas">0</div>
+              <div class="admin-stat-card__etiqueta">Escaladas a un agente</div>
+            </div>
+          </div>
+          <div class="admin-stat-card">
+            <div class="admin-stat-card__icono admin-stat-card__icono--azul"><i class="bi bi-check2-circle"></i></div>
+            <div>
+              <div class="admin-stat-card__valor" id="statCerradas">0</div>
+              <div class="admin-stat-card__etiqueta">Cerradas</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FILTROS -->
+        <div class="dash-filtros">
+          <div class="dash-filtro" style="flex:1; min-width:220px;">
+            <label for="convBuscar">Buscar</label>
+            <input type="text" id="convBuscar" placeholder="Nombre, correo o número de conversación">
+          </div>
+          <div class="dash-filtro">
+            <label for="convEstado">Estado</label>
+            <select id="convEstado" style="padding:9px 12px; border:1px solid var(--color-borde); border-radius:var(--radio-sm); font-family:inherit; font-size:0.87rem;">
+              <option value="">Todos</option>
+              <option value="abierta">Abiertas</option>
+              <option value="escalada">Escaladas</option>
+              <option value="cerrada">Cerradas</option>
+            </select>
+          </div>
+          <div class="dash-filtros__acciones">
+            <button class="dash-btn dash-btn--claro" id="convLimpiar"><i class="bi bi-x-circle"></i> Limpiar</button>
+            <button class="dash-btn dash-btn--primario" id="convActualizar"><i class="bi bi-arrow-clockwise"></i> Actualizar</button>
+          </div>
+        </div>
+
+        <!-- LISTA + CHAT -->
+        <div class="conv-layout">
+
+          <div class="admin-panel" style="padding:0; overflow:hidden;">
+            <div class="admin-panel__cabecera" style="padding:var(--espacio-md) var(--espacio-lg);">
+              <h2 class="admin-panel__titulo">Listado</h2>
+              <span id="convContador" style="font-size:0.78rem; color:var(--color-texto-suave);"></span>
+            </div>
+            <div class="conv-lista" id="convLista">
+              <div class="dash-cargando"><span class="dash-spinner"></span> Cargando...</div>
+            </div>
+          </div>
+
+          <div class="admin-panel conv-chat" style="padding:0; overflow:hidden;" id="convPanel">
+            <div class="conv-vacio">
+              <i class="bi bi-chat-square-text"></i>
+              Selecciona una conversación de la lista para ver los mensajes.
+            </div>
+          </div>
+
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <script src="../../js/api.js"></script>
+  <script src="../js/admin.js"></script>
+  <script src="../js/conversaciones-admin.js"></script>
+</body>
+</html>

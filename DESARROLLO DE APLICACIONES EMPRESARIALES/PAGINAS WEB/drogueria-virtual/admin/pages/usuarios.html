@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Usuarios y roles - Panel Administrativo VitalFarma</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/main.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="admin-body">
+
+  <div class="admin-layout">
+
+    <div>
+      <header class="admin-topbar">
+        <h1 class="admin-topbar__titulo">Usuarios y roles</h1>
+        <div class="admin-topbar__usuario">
+          <div><div id="adminNombre" style="font-weight:600;">Cargando...</div><span class="admin-topbar__rol" id="adminRol"></span></div>
+          <div class="admin-topbar__avatar" id="adminAvatar">A</div>
+        </div>
+      </header>
+
+      <main class="admin-contenido">
+
+        <div style="background:#FEE2E2; border-left:4px solid #DC2626; padding:12px 16px; border-radius:var(--radio-md); margin-bottom:var(--espacio-lg); font-size:0.82rem;">
+          ⚠️ <strong>Zona de superadministrador.</strong> Cambiar el rol de una cuenta modifica
+          a qué información puede acceder esa persona. Los usuarios no se eliminan: se desactivan,
+          para no perder el historial de sus pedidos.
+        </div>
+
+        <div class="admin-stats-grid" id="usuariosResumen"></div>
+
+        <div class="admin-panel">
+          <div class="admin-toolbar">
+            <div class="admin-toolbar__buscador">
+              🔍 <input type="text" id="filtroBusqueda" placeholder="Buscar por nombre o correo...">
+            </div>
+            <select id="filtroRol" style="padding:10px 14px; border:1.5px solid var(--color-borde); border-radius:var(--radio-md); font-size:0.87rem;">
+              <option value="">Todos los roles</option>
+              <option value="cliente">Clientes</option>
+              <option value="admin">Administradores</option>
+              <option value="superadmin">Superadministradores</option>
+            </select>
+            <button class="btn btn-secundario" id="btnLimpiarFiltros" style="padding:10px 18px;">Limpiar</button>
+          </div>
+
+          <div class="admin-tabla-wrapper">
+            <table class="admin-tabla">
+              <thead>
+                <tr>
+                  <th>Usuario</th>
+                  <th>Teléfono</th>
+                  <th>Registro</th>
+                  <th>Rol</th>
+                  <th>Estado</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="usuariosTabla">
+                <tr><td colspan="6" style="text-align:center; padding:var(--espacio-lg);">Cargando usuarios...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <script src="../../js/api.js"></script>
+  <script src="../js/admin.js"></script>
+  <script src="../js/usuarios-admin.js"></script>
+  <script src="../../js/idioma.js"></script>
+</body>
+</html>

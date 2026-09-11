@@ -1,0 +1,216 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #fff;
+  border-bottom: 1px solid var(--color-borde);
+}
+
+.header__contenido {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espacio-lg);
+  padding: var(--espacio-md) 0;
+}
+
+/* ===== LOGO CON SÍMBOLO ===== */
+.header__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+.header__logo-marca {
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+  background: linear-gradient(135deg, var(--color-primario) 0%, var(--color-primario-oscuro) 100%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  flex-shrink: 0;
+  box-shadow: 0 3px 10px rgba(11, 122, 117, 0.28);
+}
+
+.header__logo-texto {
+  font-family: var(--fuente-titulos);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--color-primario);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.header__logo-texto span {
+  color: var(--color-acento);
+}
+
+.header__buscador {
+  flex: 1;
+  max-width: 480px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--color-fondo-alterno);
+  border: 1px solid var(--color-borde);
+  border-radius: 999px;
+  padding: 9px 18px;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.header__buscador:focus-within {
+  border-color: var(--color-primario);
+  background: #fff;
+}
+
+.header__buscador-icono {
+  color: var(--color-texto-suave);
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.header__buscador input {
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 100%;
+  font-size: 0.95rem;
+  font-family: inherit;
+}
+
+.header__acciones {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-md);
+}
+
+.header__icono {
+  position: relative;
+  font-size: 1.3rem;
+  color: var(--color-texto);
+}
+
+.header__carrito-contador {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background: var(--color-acento);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== BOTÓN DE IDIOMA ===== */
+/* Lo inserta js/idioma.js dentro de .header__acciones */
+.header__idioma {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  border: 1px solid var(--color-borde);
+  border-radius: 999px;
+  background: #fff;
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-texto);
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.header__idioma:hover {
+  border-color: var(--color-primario);
+  background: var(--color-fondo-alterno);
+}
+
+.header__idioma span {
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+.header__menu-toggle {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
+}
+
+/* Navegación */
+.nav {
+  background: var(--color-primario-claro);
+}
+
+.nav__lista {
+  display: flex;
+  gap: var(--espacio-lg);
+  padding: var(--espacio-sm) 0;
+  overflow-x: auto;
+}
+
+.nav__link {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-primario-oscuro);
+  white-space: nowrap;
+}
+
+.nav__link:hover {
+  color: var(--color-acento);
+}
+
+/* ===== ICONOS DEL HEADER (Bootstrap Icons) ===== */
+.header__icono {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  font-size: 1.25rem;
+  color: var(--color-texto);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.header__icono:hover {
+  background: var(--color-primario-claro);
+  color: var(--color-primario);
+}
+
+.header__carrito-contador {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background: var(--color-acento);
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  border-radius: 999px;
+  min-width: 17px;
+  height: 17px;
+  padding: 0 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* Enlace destacado en el nav (orden médica) */
+.nav__link--destacado {
+  color: var(--color-acento-oscuro);
+  font-weight: 700;
+}
+
+/* Emojis fuera: el logo y los iconos ahora son Bootstrap Icons.
+   Esta clase mantiene el tamaño del icono dentro del botón de menú. */
+.header__menu-toggle i { font-size: 1.5rem; }

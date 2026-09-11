@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar sesión - VitalFarma</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+
+  <div class="login-pagina">
+
+    <!-- COLUMNA IZQUIERDA: FORMULARIO -->
+    <div class="login-form-col">
+      <div class="login-caja">
+
+        <div class="login-topbar">
+          <a href="index.html" class="login-logo">
+            <span class="login-logo__marca"><i class="bi bi-plus-lg"></i></span>
+            <span class="login-logo__texto">Vital<span>Farma</span></span>
+          </a>
+          <!-- idioma.js inserta aquí el botón ES/EN -->
+          <div data-idioma-slot></div>
+        </div>
+
+        <h1 class="login-caja__titulo" data-i18n="login_titulo">Bienvenido de nuevo</h1>
+        <p class="login-caja__subtitulo" data-i18n="login_subtitulo">Ingresa tus datos para acceder a tu cuenta.</p>
+
+        <!-- Sin data-i18n: los mensajes los escribe auth.js -->
+        <div class="login-mensaje" id="loginMensaje"></div>
+
+        <form id="formLogin" novalidate>
+          <div class="login-campo">
+            <label for="loginEmail" data-i18n="correo_electronico">Correo electrónico</label>
+            <div class="login-campo__control">
+              <i class="bi bi-envelope login-campo__icono"></i>
+              <input type="email" id="loginEmail" autocomplete="email"
+                     data-i18n="ph_correo" placeholder="tucorreo@ejemplo.com">
+            </div>
+            <span class="login-campo__error" id="errorLoginEmail"></span>
+          </div>
+
+          <div class="login-campo">
+            <label for="loginPassword" data-i18n="contrasena">Contraseña</label>
+            <div class="login-campo__control">
+              <i class="bi bi-lock login-campo__icono"></i>
+              <input type="password" id="loginPassword" autocomplete="current-password"
+                     data-i18n="ph_password" placeholder="••••••••">
+              <button type="button" class="login-campo__ver" id="btnVerPassword" aria-label="Ver contraseña">
+                <i class="bi bi-eye"></i>
+              </button>
+            </div>
+            <span class="login-campo__error" id="errorLoginPassword"></span>
+          </div>
+
+          <div class="login-opciones">
+            <!-- El data-i18n va en el <span>: sobre el <label> borraría el checkbox -->
+            <label>
+              <input type="checkbox">
+              <span data-i18n="recordarme">Recordarme</span>
+            </label>
+            <a href="#" data-i18n="olvidaste_password">¿Olvidaste tu contraseña?</a>
+          </div>
+
+          <button type="submit" class="login-btn" data-i18n="iniciar_sesion">Iniciar sesión</button>
+        </form>
+
+        <!-- data-i18n-html porque la frase lleva un enlace dentro -->
+        <p class="login-pie" data-i18n-html="no_tienes_cuenta_html">
+          ¿No tienes cuenta? <a href="registro.html">Regístrate aquí</a>
+        </p>
+
+        <div class="login-enlaces">
+          <a href="index.html" class="login-enlace">
+            <i class="bi bi-arrow-left"></i>
+            <span data-i18n="volver_inicio">Volver al inicio</span>
+          </a>
+          <span class="login-enlaces__sep"></span>
+          <a href="admin/login.html" class="login-enlace">
+            <i class="bi bi-shield-lock"></i>
+            <span data-i18n="soy_administrador">Soy administrador</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- COLUMNA DERECHA: MENSAJE SOBRE LA FOTO -->
+    <div class="login-visual">
+      <div class="login-visual__contenido">
+        <h2 class="login-visual__titulo" data-i18n-html="login_visual_titulo_html">Tu salud, siempre <span>a un clic</span></h2>
+        <p class="login-visual__texto" data-i18n="login_visual_texto">Accede a tus pedidos, órdenes médicas y mucho más.</p>
+
+        <div class="login-tarjetas">
+          <div class="login-tarjeta">
+            <div class="login-tarjeta__icono"><i class="bi bi-box-seam"></i></div>
+            <div>
+              <div class="login-tarjeta__titulo" data-i18n="login_t1_titulo">Sigue tus pedidos</div>
+              <div class="login-tarjeta__texto" data-i18n="login_t1_texto">Consulta el estado de cada entrega en tiempo real.</div>
+            </div>
+          </div>
+          <div class="login-tarjeta">
+            <div class="login-tarjeta__icono"><i class="bi bi-clipboard2-pulse"></i></div>
+            <div>
+              <div class="login-tarjeta__titulo" data-i18n="login_t2_titulo">Sube tu orden médica</div>
+              <div class="login-tarjeta__texto" data-i18n="login_t2_texto">La analizamos y te sugerimos los medicamentos.</div>
+            </div>
+          </div>
+          <div class="login-tarjeta">
+            <div class="login-tarjeta__icono"><i class="bi bi-truck"></i></div>
+            <div>
+              <div class="login-tarjeta__titulo" data-i18n="login_t3_titulo">Domicilios el mismo día</div>
+              <div class="login-tarjeta__texto" data-i18n="login_t3_texto">Envío gratis en compras superiores a $80.000.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ORDEN CORRECTO: api.js primero -->
+  <script src="js/api.js"></script>
+  <script src="js/idioma.js"></script>
+  <script src="js/validaciones.js"></script>
+  <script src="js/auth.js"></script>
+
+  <script>
+    // Ver / ocultar contraseña. Va aquí y no en validaciones.js
+    // porque el markup del ojito es propio de esta página.
+    document.addEventListener('DOMContentLoaded', function () {
+      var btn = document.getElementById('btnVerPassword');
+      var input = document.getElementById('loginPassword');
+      if (!btn || !input) return;
+
+      btn.addEventListener('click', function () {
+        var oculta = input.type === 'password';
+        input.type = oculta ? 'text' : 'password';
+        btn.innerHTML = oculta ? '<i class="bi bi-eye-slash"></i>' : '<i class="bi bi-eye"></i>';
+      });
+    });
+  </script>
+</body>
+</html>

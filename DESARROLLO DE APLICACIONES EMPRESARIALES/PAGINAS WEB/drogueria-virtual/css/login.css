@@ -1,0 +1,344 @@
+/* ============================================================
+   PÁGINA DE INICIO DE SESIÓN
+   Imagen de fondo a pantalla completa con el formulario
+   sobre una tarjeta blanca a la izquierda.
+   ============================================================ */
+
+.login-pagina {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--espacio-2xl);
+  padding: var(--espacio-xl) var(--espacio-lg);
+  background-image: url('../images/fondo1.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* Velo con tinte de marca: sin esto el texto blanco de la derecha
+   se perdería contra las zonas claras de la foto. */
+.login-pagina::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, rgba(255, 255, 255, 0.10) 0%, rgba(6, 78, 75, 0.80) 45%, rgba(28, 109, 208, 0.72) 100%);
+}
+
+/* ===== COLUMNA IZQUIERDA: FORMULARIO ===== */
+.login-form-col {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--espacio-xl) var(--espacio-lg);
+}
+
+.login-caja {
+  width: 100%;
+  max-width: 460px;
+  background: #fff;
+  border-radius: var(--radio-lg);
+  padding: var(--espacio-2xl) var(--espacio-xl);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+  animation: loginEntrada 0.35s ease-out;
+}
+
+@keyframes loginEntrada {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.login-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--espacio-xl);
+}
+
+.login-logo { display: flex; align-items: center; gap: 10px; }
+
+.login-logo__marca {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--color-primario) 0%, var(--color-primario-oscuro) 100%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  box-shadow: 0 4px 12px rgba(11, 122, 117, 0.3);
+}
+
+.login-logo__texto {
+  font-family: var(--fuente-titulos);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--color-primario);
+  line-height: 1;
+}
+
+.login-logo__texto span { color: var(--color-acento); }
+
+.login-caja__titulo {
+  font-size: 1.6rem;
+  margin-bottom: 6px;
+}
+
+.login-caja__subtitulo {
+  color: var(--color-texto-suave);
+  font-size: 0.9rem;
+  margin-bottom: var(--espacio-xl);
+}
+
+/* ===== CAMPOS CON ICONO ===== */
+.login-campo { margin-bottom: var(--espacio-md); }
+
+.login-campo label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.login-campo__control {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.login-campo__icono {
+  position: absolute;
+  left: 14px;
+  color: var(--color-texto-suave);
+  font-size: 1rem;
+  pointer-events: none;
+}
+
+.login-campo input {
+  width: 100%;
+  padding: 13px 44px 13px 42px;
+  border: 1.5px solid var(--color-borde);
+  border-radius: var(--radio-md);
+  font-family: inherit;
+  font-size: 0.93rem;
+  background: var(--color-fondo-alterno);
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.login-campo input:focus {
+  outline: none;
+  border-color: var(--color-primario);
+  background: #fff;
+}
+
+.login-campo input.campo-error { border-color: var(--color-error); }
+
+.login-campo__ver {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  color: var(--color-texto-suave);
+  padding: 6px;
+}
+
+.login-campo__ver:hover { color: var(--color-texto); }
+
+.login-campo__error {
+  display: block;
+  font-size: 0.76rem;
+  color: var(--color-error);
+  min-height: 15px;
+  margin-top: 4px;
+}
+
+/* ===== OPCIONES Y MENSAJES ===== */
+.login-opciones {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.83rem;
+  margin-bottom: var(--espacio-lg);
+}
+
+.login-opciones label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+  color: var(--color-texto-suave);
+}
+
+.login-opciones input { accent-color: var(--color-primario); }
+
+.login-opciones a { color: var(--color-primario); font-weight: 600; }
+
+.login-mensaje {
+  display: none;
+  padding: 11px 14px;
+  border-radius: var(--radio-sm);
+  font-size: 0.85rem;
+  margin-bottom: var(--espacio-md);
+  background: #FEE2E2;
+  color: var(--color-error);
+}
+
+.login-mensaje--visible { display: block; }
+
+.login-mensaje--exito {
+  background: #DCFCE7;
+  color: var(--color-exito);
+}
+
+.login-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px;
+  border-radius: var(--radio-md);
+  background: var(--color-primario);
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.login-btn:hover:not(:disabled) { background: var(--color-primario-oscuro); }
+.login-btn:disabled { opacity: 0.65; cursor: not-allowed; }
+
+.login-pie {
+  text-align: center;
+  font-size: 0.87rem;
+  color: var(--color-texto-suave);
+  margin-top: var(--espacio-lg);
+}
+
+.login-pie a { color: var(--color-primario); font-weight: 600; }
+
+/* ===== ENLACES DEL PIE =====
+   Reemplaza al antiguo .login-volver, que era un solo enlace.
+   Ahora son dos: volver al inicio y acceso administrativo. */
+.login-enlaces {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: var(--espacio-md);
+  padding-top: var(--espacio-md);
+  border-top: 1px solid var(--color-borde);
+  flex-wrap: wrap;
+}
+
+.login-enlace {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.79rem;
+  color: var(--color-texto-suave);
+  transition: color 0.18s ease;
+}
+
+.login-enlace:hover { color: var(--color-primario); }
+
+.login-enlaces__sep {
+  width: 1px;
+  height: 13px;
+  background: var(--color-borde);
+}
+
+/* ===== COLUMNA DERECHA: MENSAJE SOBRE LA FOTO ===== */
+.login-visual {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--espacio-2xl) var(--espacio-xl);
+}
+
+.login-visual__contenido { max-width: 430px; }
+
+.login-visual__titulo {
+  font-size: 2.2rem;
+  line-height: 1.18;
+  margin-bottom: var(--espacio-md);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.28);
+}
+
+.login-visual__titulo span { color: #FFD9CE; }
+
+.login-visual__texto {
+  font-size: 1rem;
+  opacity: 0.93;
+  margin-bottom: var(--espacio-xl);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+}
+
+/* Tarjetas de cristal sobre la foto */
+.login-tarjetas {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-md);
+}
+
+.login-tarjeta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(255, 255, 255, 0.13);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  border-radius: var(--radio-md);
+  padding: 15px 18px;
+}
+
+.login-tarjeta:nth-child(2) { margin-left: 28px; }
+.login-tarjeta:nth-child(3) { margin-left: 56px; }
+
+.login-tarjeta__icono {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.login-tarjeta__titulo {
+  font-weight: 700;
+  font-size: 0.92rem;
+  margin-bottom: 2px;
+}
+
+.login-tarjeta__texto {
+  font-size: 0.79rem;
+  opacity: 0.88;
+  line-height: 1.35;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .login-pagina {
+    grid-template-columns: 1fr;
+    /* fixed salta al hacer scroll en móviles */
+    background-attachment: scroll;
+  }
+  .login-visual { display: none; }
+}

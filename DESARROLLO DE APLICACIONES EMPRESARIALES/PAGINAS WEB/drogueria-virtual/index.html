@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VitalFarma - Tu droguería virtual de confianza</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap Icons: SOLO los iconos, no el framework completo.
+       Bootstrap entero chocaría con nuestro CSS propio. -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/productos.css">
+    <link rel="stylesheet" href="css/inicio.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="contenedor header__contenido">
+      <!-- El logo es marca registrada: no se traduce -->
+      <a href="index.html" class="header__logo">
+        <span class="header__logo-marca"><i class="bi bi-plus-lg"></i></span>
+        <span class="header__logo-texto">Vital<span>Farma</span></span>
+      </a>
+
+      <div class="header__buscador">
+        <i class="bi bi-search header__buscador-icono"></i>
+        <input type="text" data-i18n="buscar_placeholder" placeholder="Buscar productos, marcas, categorías...">
+      </div>
+
+      <div class="header__acciones">
+        <!-- Sin data-i18n: main.js reemplaza el contenido con la inicial del usuario -->
+        <a href="login.html" class="header__icono" id="headerCuenta"
+           data-i18n-title="iniciar_sesion" title="Iniciar sesión"><i class="bi bi-person"></i></a>
+        <!-- Sin data-i18n: contiene el contador del carrito -->
+        <a href="pages/carrito.html" class="header__icono"
+           data-i18n-title="carrito" title="Carrito">
+          <i class="bi bi-bag"></i>
+          <span class="header__carrito-contador">0</span>
+        </a>
+        <!-- idioma.js inserta aquí el botón ES/EN -->
+        <button class="header__menu-toggle" id="menuToggle"><i class="bi bi-list"></i></button>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <div class="contenedor">
+        <ul class="nav__lista" id="navLista">
+          <li><a href="pages/catalogo.html?categoria=Medicamentos" class="nav__link" data-i18n="nav_medicamentos">Medicamentos</a></li>
+          <li><a href="pages/catalogo.html?categoria=Cuidado personal" class="nav__link" data-i18n="nav_cuidado_personal">Cuidado personal</a></li>
+          <li><a href="pages/catalogo.html?categoria=Vitaminas" class="nav__link" data-i18n="nav_vitaminas">Vitaminas</a></li>
+          <li><a href="pages/catalogo.html?categoria=Higiene" class="nav__link" data-i18n="nav_higiene">Higiene</a></li>
+          <li><a href="pages/catalogo.html?categoria=Bebés" class="nav__link" data-i18n="nav_bebes">Bebés</a></li>
+          <li><a href="pages/catalogo.html?categoria=Primeros auxilios" class="nav__link" data-i18n="nav_primeros_auxilios">Primeros auxilios</a></li>
+          <li><a href="pages/orden-medica.html" class="nav__link nav__link--destacado" data-i18n="subir_orden">Subir orden médica</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+    <!-- BANNER PRINCIPAL -->
+  <section class="banner">
+    <div class="contenedor banner__contenido">
+      <div class="banner__texto-bloque">
+        <span class="banner__etiqueta">
+          <i class="bi bi-truck"></i>
+          <span data-i18n="banner_etiqueta_texto">Entrega en el mismo día</span>
+        </span>
+        <h1 class="banner__titulo" data-i18n-html="banner_titulo_html">Tu salud, <span>a un clic</span> de distancia</h1>
+        <p class="banner__texto" data-i18n="banner_texto">
+          Medicamentos, cuidado personal y bienestar con la confianza de una droguería real.
+          Sube tu orden médica y nosotros nos encargamos del resto.
+        </p>
+        <div class="banner__acciones">
+          <a href="pages/catalogo.html" class="btn btn-acento" data-i18n="ver_catalogo">Ver catálogo</a>
+          <a href="pages/orden-medica.html" class="btn btn-secundario" data-i18n="subir_orden">Subir orden médica</a>
+        </div>
+        <ul class="banner__confianza">
+          <li><i class="bi bi-patch-check"></i> <span data-i18n="banner_originales_texto">Productos originales</span></li>
+          <li><i class="bi bi-shield-lock"></i> <span data-i18n="banner_segura_texto">Compra segura</span></li>
+          <li><i class="bi bi-stopwatch"></i> <span data-i18n="banner_domicilios_texto">Domicilios rápidos</span></li>
+        </ul>
+      </div>
+
+      <div class="banner__visual">
+        <div class="banner__card-flotante">
+          <div class="banner__card-flotante-icono"><i class="bi bi-chat-dots"></i></div>
+          <h4 data-i18n="banner_card_titulo">Asistente virtual 24/7</h4>
+          <p style="font-size:0.85rem;" data-i18n="banner_card_texto">
+            Resuelve dudas sobre productos, pedidos y domicilios al instante.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+   <!-- CARRUSEL DE PROPAGANDAS -->
+  <section class="promos">
+    <div class="promo-carrusel" id="promoCarrusel">
+      <div class="promo-pista" id="promoPista">
+        <a href="pages/catalogo.html" class="promo-slide"><img src="images/propaganda1.jpg" alt="Promoción 1"></a>
+        <a href="pages/catalogo.html" class="promo-slide"><img src="images/propaganda2.jpg" alt="Promoción 2"></a>
+        <a href="pages/catalogo.html" class="promo-slide"><img src="images/propaganda3.jpg" alt="Promoción 3"></a>
+        <a href="pages/catalogo.html" class="promo-slide"><img src="images/propaganda4.jpg" alt="Promoción 4"></a>
+      </div>
+      <button class="promo-flecha promo-flecha--izq" id="promoAnterior" aria-label="Anterior"><i class="bi bi-chevron-left"></i></button>
+      <button class="promo-flecha promo-flecha--der" id="promoSiguiente" aria-label="Siguiente"><i class="bi bi-chevron-right"></i></button>
+      <div class="promo-puntos" id="promoPuntos"></div>
+    </div>
+  </section>
+
+  <!-- CATEGORÍAS -->
+  <section class="categorias">
+    <div class="contenedor">
+      <h2 class="seccion-titulo" data-i18n="categorias_titulo">Explora por categoría</h2>
+      <div class="categorias__grid">
+        <a href="pages/catalogo.html?categoria=Medicamentos" class="categoria-card">
+          <div class="categoria-card__icono"><i class="bi bi-capsule-pill"></i></div>
+          <span class="categoria-card__nombre" data-i18n="nav_medicamentos">Medicamentos</span>
+        </a>
+        <a href="pages/catalogo.html?categoria=Cuidado personal" class="categoria-card">
+          <div class="categoria-card__icono"><i class="bi bi-heart-pulse"></i></div>
+          <span class="categoria-card__nombre" data-i18n="nav_cuidado_personal">Cuidado personal</span>
+        </a>
+        <a href="pages/catalogo.html?categoria=Vitaminas" class="categoria-card">
+          <div class="categoria-card__icono"><i class="bi bi-capsule"></i></div>
+          <span class="categoria-card__nombre" data-i18n="nav_vitaminas">Vitaminas</span>
+        </a>
+        <a href="pages/catalogo.html?categoria=Higiene" class="categoria-card">
+          <div class="categoria-card__icono"><i class="bi bi-droplet"></i></div>
+          <span class="categoria-card__nombre" data-i18n="nav_higiene">Higiene</span>
+        </a>
+        <a href="pages/catalogo.html?categoria=Bebés" class="categoria-card">
+          <div class="categoria-card__icono"><i class="bi bi-emoji-smile"></i></div>
+          <span class="categoria-card__nombre" data-i18n="nav_bebes">Bebés</span>
+        </a>
+        <a href="pages/catalogo.html?categoria=Primeros auxilios" class="categoria-card">
+          <div class="categoria-card__icono"><i class="bi bi-bandaid"></i></div>
+          <span class="categoria-card__nombre" data-i18n="nav_primeros_auxilios">Primeros auxilios</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+    <!-- PRODUCTOS DESTACADOS -->
+  <section class="seccion">
+    <div class="contenedor">
+      <div class="seccion__cabecera">
+        <h2 class="seccion-titulo" data-i18n="destacados_titulo">Productos destacados</h2>
+        <a href="pages/catalogo.html" class="seccion__ver-todo">
+          <span data-i18n="ver_todo_texto">Ver todo</span> <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="carrusel-productos">
+        <button class="carrusel-nav carrusel-nav--izq" id="prodAnterior" aria-label="Anterior"><i class="bi bi-chevron-left"></i></button>
+        <div class="carrusel-productos__pista" id="productosDestacados">
+          <!-- Se llena dinámicamente desde js/productos.js -->
+        </div>
+        <button class="carrusel-nav carrusel-nav--der" id="prodSiguiente" aria-label="Siguiente"><i class="bi bi-chevron-right"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFICIOS -->
+  <section class="seccion beneficios">
+    <div class="contenedor">
+      <h2 class="seccion-titulo" data-i18n="beneficios_titulo">¿Por qué elegir VitalFarma?</h2>
+      <div class="beneficios__grid">
+        <div class="beneficio-card tarjeta">
+          <div class="beneficio-card__icono"><i class="bi bi-truck"></i></div>
+          <h3 data-i18n="beneficio1_titulo">Entrega rápida</h3>
+          <p data-i18n="beneficio1_texto">Domicilios el mismo día en tu ciudad.</p>
+        </div>
+        <div class="beneficio-card tarjeta">
+          <div class="beneficio-card__icono"><i class="bi bi-shield-lock"></i></div>
+          <h3 data-i18n="beneficio2_titulo">Compra segura</h3>
+          <p data-i18n="beneficio2_texto">Tus datos y pagos protegidos en todo momento.</p>
+        </div>
+        <div class="beneficio-card tarjeta">
+          <div class="beneficio-card__icono"><i class="bi bi-headset"></i></div>
+          <h3 data-i18n="beneficio3_titulo">Asesoría 24/7</h3>
+          <p data-i18n="beneficio3_texto">Nuestro asistente virtual resuelve tus dudas.</p>
+        </div>
+        <div class="beneficio-card tarjeta">
+          <div class="beneficio-card__icono"><i class="bi bi-patch-check"></i></div>
+          <h3 data-i18n="beneficio4_titulo">Productos originales</h3>
+          <p data-i18n="beneficio4_texto">Garantía de calidad en cada producto.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHATBOT FLOTANTE -->
+  <a href="pages/chatbot.html" class="chatbot-flotante"
+     data-i18n-title="chatbot_flotante_title" title="Habla con nuestro asistente"><i class="bi bi-chat-dots-fill"></i></a>
+
+    <!-- FOOTER -->
+  <footer class="footer">
+    <div class="contenedor">
+      <div class="footer__grid">
+        <div>
+          <h3 class="footer__titulo">VitalFarma</h3>
+          <p style="font-size:0.9rem; color:#D1D5DB;" data-i18n="footer_tagline">Tu droguería virtual de confianza.</p>
+          <div class="footer-redes">
+            <a href="https://wa.me/573000000000" target="_blank" rel="noopener" class="footer-red" title="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+            <a href="https://www.facebook.com" target="_blank" rel="noopener" class="footer-red" title="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com" target="_blank" rel="noopener" class="footer-red" title="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.tiktok.com" target="_blank" rel="noopener" class="footer-red" title="TikTok"><i class="bi bi-tiktok"></i></a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer__titulo" data-i18n="footer_enlaces">Enlaces</h3>
+          <ul class="footer__lista">
+            <li><a href="pages/catalogo.html" data-i18n="catalogo">Catálogo</a></li>
+            <li><a href="pages/orden-medica.html" data-i18n="subir_orden">Subir orden médica</a></li>
+            <li><a href="pages/carrito.html" data-i18n="carrito">Carrito</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer__titulo" data-i18n="mi_cuenta">Mi cuenta</h3>
+          <ul class="footer__lista">
+            <li><a href="login.html" data-i18n="iniciar_sesion">Iniciar sesión</a></li>
+            <li><a href="registro.html" data-i18n="footer_crear_cuenta">Crear cuenta</a></li>
+            <li><a href="user/index.html" data-i18n="resumen">Mi cuenta</a></li>
+            <li><a href="user/pages/pedidos.html" data-i18n="mis_pedidos">Mis pedidos</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer__titulo" data-i18n="footer_contacto">Contacto</h3>
+          <ul class="footer__lista">
+            <li><a href="mailto:info@vitalfarma.com"><i class="bi bi-envelope"></i> info@vitalfarma.com</a></li>
+            <li><a href="tel:+573000000000"><i class="bi bi-telephone"></i> +57 300 000 0000</a></li>
+            <li><i class="bi bi-geo-alt"></i> Bucaramanga, Santander</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom" data-i18n="footer_derechos">
+        &copy; 2026 VitalFarma. Todos los derechos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL DE DETALLE DE PRODUCTO -->
+  <div class="pmodal-fondo" id="pmodalFondo">
+    <div class="pmodal">
+      <button class="pmodal__cerrar" id="pmodalCerrar" aria-label="Cerrar"><i class="bi bi-x-lg"></i></button>
+      <div class="pmodal__cuerpo" id="pmodalCuerpo"></div>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/idioma.js"></script>
+  <script src="js/carrito.js"></script>
+  <script src="js/productos.js"></script>
+  <script src="js/inicio.js"></script>
+  <script src="js/chatbot.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/guardia-rol.js"></script>
+</body>
+</html>

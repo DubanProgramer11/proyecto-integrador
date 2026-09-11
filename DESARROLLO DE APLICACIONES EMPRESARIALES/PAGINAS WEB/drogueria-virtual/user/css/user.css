@@ -1,0 +1,665 @@
+.user-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: var(--espacio-xl);
+  align-items: start;
+  padding: var(--espacio-xl) 0;
+}
+
+/* ===== SIDEBAR ===== */
+.user-sidebar {
+  position: sticky;
+  top: 90px;
+  background: #fff;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-md);
+  padding: var(--espacio-lg);
+}
+
+.user-sidebar__perfil {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: var(--espacio-lg);
+  margin-bottom: var(--espacio-lg);
+  border-bottom: 1px solid var(--color-borde);
+}
+
+.user-sidebar__avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--color-primario);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.user-sidebar__nombre {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-texto);
+}
+
+.user-sidebar__email {
+  font-size: 0.78rem;
+  color: var(--color-texto-suave);
+  word-break: break-all;
+}
+
+.user-sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.user-sidebar__link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: var(--radio-sm);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-texto);
+}
+
+.user-sidebar__link:hover {
+  background: var(--color-fondo-alterno);
+}
+
+.user-sidebar__link--activo {
+  background: var(--color-primario-claro);
+  color: var(--color-primario-oscuro);
+  font-weight: 700;
+}
+
+.user-sidebar__logout {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  margin-top: var(--espacio-lg);
+  border-top: 1px solid var(--color-borde);
+  padding-top: var(--espacio-md);
+  background: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-error);
+}
+
+/* ===== CONTENIDO ===== */
+.user-panel {
+  background: #fff;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-md);
+  padding: var(--espacio-xl);
+}
+
+.user-panel__titulo {
+  font-size: 1.3rem;
+  margin-bottom: 4px;
+}
+
+.user-panel__subtitulo {
+  color: var(--color-texto-suave);
+  font-size: 0.9rem;
+  margin-bottom: var(--espacio-xl);
+}
+
+/* ===== CABECERA DEL DASHBOARD ===== */
+.dash-cabecera {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--espacio-lg);
+  flex-wrap: wrap;
+  margin-bottom: var(--espacio-xl);
+}
+
+.dash-cabecera__fecha {
+  font-size: 0.8rem;
+  color: var(--color-texto-suave);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+/* ===== TARJETAS DE RESUMEN ===== */
+.user-resumen {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--espacio-md);
+  margin-bottom: var(--espacio-xl);
+}
+
+.user-resumen-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: var(--espacio-lg);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-md);
+  background: #fff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.user-resumen-card:hover {
+  border-color: var(--color-primario);
+  box-shadow: 0 6px 18px rgba(11, 122, 117, 0.10);
+  transform: translateY(-2px);
+}
+
+.user-resumen-card__icono {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  flex-shrink: 0;
+}
+
+/* Un color por métrica, para leerlas de un vistazo */
+.user-resumen-card__icono--pedidos {
+  background: var(--color-primario-claro);
+  color: var(--color-primario);
+}
+.user-resumen-card__icono--direcciones {
+  background: var(--color-secundario-claro);
+  color: var(--color-secundario);
+}
+.user-resumen-card__icono--ordenes {
+  background: #FEF3C7;
+  color: #D97706;
+}
+
+.user-resumen-card__valor {
+  font-family: var(--fuente-titulos);
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.user-resumen-card__etiqueta {
+  font-size: 0.78rem;
+  color: var(--color-texto-suave);
+  line-height: 1.3;
+}
+
+/* ===== BLOQUES DEL DASHBOARD ===== */
+.dash-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: var(--espacio-lg);
+  align-items: start;
+}
+
+.dash-bloque {
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-md);
+  background: #fff;
+  overflow: hidden;
+}
+
+.dash-bloque__cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espacio-sm);
+  padding: 14px var(--espacio-lg);
+  border-bottom: 1px solid var(--color-borde);
+  background: var(--color-fondo-alterno);
+}
+
+.dash-bloque__titulo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--fuente-titulos);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.dash-bloque__titulo i { color: var(--color-primario); }
+
+.dash-bloque__link {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-primario);
+}
+.dash-bloque__link:hover { color: var(--color-acento); }
+
+.dash-bloque__cuerpo { padding: var(--espacio-md) var(--espacio-lg); }
+
+/* Lista de pedidos recientes */
+.dash-pedido {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espacio-sm);
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-borde);
+}
+
+.dash-pedido:last-child { border-bottom: none; }
+
+.dash-pedido__id {
+  font-weight: 700;
+  font-size: 0.88rem;
+}
+
+.dash-pedido__fecha {
+  font-size: 0.76rem;
+  color: var(--color-texto-suave);
+}
+
+.dash-pedido__derecha {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dash-pedido__total {
+  font-weight: 700;
+  font-size: 0.88rem;
+  white-space: nowrap;
+}
+
+.dash-vacio {
+  text-align: center;
+  color: var(--color-texto-suave);
+  font-size: 0.85rem;
+  padding: var(--espacio-lg) 0;
+}
+
+/* Accesos rápidos */
+.dash-accesos {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.dash-acceso {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: var(--radio-sm);
+  font-size: 0.87rem;
+  font-weight: 500;
+  color: var(--color-texto);
+  transition: background 0.18s ease;
+}
+
+.dash-acceso:hover { background: var(--color-fondo-alterno); }
+
+.dash-acceso__icono {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--color-primario-claro);
+  color: var(--color-primario);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.dash-acceso__flecha {
+  margin-left: auto;
+  color: var(--color-texto-suave);
+  font-size: 0.8rem;
+}
+
+@media (max-width: 1100px) {
+  .dash-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 700px) {
+  .user-resumen { grid-template-columns: 1fr; }
+}
+/* ===== FORMULARIO DE PERFIL / DIRECCIÓN ===== */
+.user-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-md);
+  max-width: 520px;
+}
+
+.user-form__fila-doble {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--espacio-md);
+}
+
+.user-form label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.user-form input,
+.user-form select,
+.user-form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid var(--color-borde);
+  border-radius: var(--radio-md);
+  font-size: 0.9rem;
+  font-family: var(--fuente-texto);
+  outline: none;
+}
+
+.user-form input:focus,
+.user-form select:focus,
+.user-form textarea:focus {
+  border-color: var(--color-primario);
+}
+
+.user-form input.campo-error {
+  border-color: var(--color-error);
+}
+
+.user-form__error {
+  font-size: 0.78rem;
+  color: var(--color-error);
+  display: none;
+  margin-top: 4px;
+}
+
+.user-form__error--visible {
+  display: block;
+}
+
+.user-form__mensaje {
+  display: none;
+  background: #DCFCE7;
+  color: var(--color-exito);
+  font-size: 0.85rem;
+  padding: 10px 14px;
+  border-radius: var(--radio-sm);
+}
+
+.user-form__mensaje--visible {
+  display: block;
+}
+
+/* ===== DIRECCIONES ===== */
+.direcciones-layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: var(--espacio-xl);
+  align-items: start;
+}
+
+.direccion-card {
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-md);
+  padding: var(--espacio-lg);
+  margin-bottom: var(--espacio-md);
+  position: relative;
+}
+
+.direccion-card--predeterminada {
+  border-color: var(--color-primario);
+  background: var(--color-primario-claro);
+}
+
+.direccion-card__badge {
+  position: absolute;
+  top: var(--espacio-md);
+  right: var(--espacio-md);
+  background: var(--color-primario);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.direccion-card__etiqueta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.direccion-card__texto {
+  font-size: 0.85rem;
+  color: var(--color-texto-suave);
+  margin-bottom: 4px;
+}
+
+.direccion-card__acciones {
+  display: flex;
+  gap: var(--espacio-sm);
+  margin-top: var(--espacio-md);
+}
+
+.direccion-card__acciones button {
+  background: none;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-primario);
+}
+
+.direccion-card__acciones button.eliminar {
+  color: var(--color-error);
+}
+
+.direcciones-vacio {
+  text-align: center;
+  padding: var(--espacio-2xl) 0;
+  color: var(--color-texto-suave);
+}
+
+@media (max-width: 900px) {
+  .user-layout,
+  .direcciones-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .user-sidebar {
+    position: static;
+  }
+
+  .user-resumen {
+    grid-template-columns: 1fr;
+  }
+
+  .user-form__fila-doble {
+    grid-template-columns: 1fr;
+  }
+}
+/* ===== BADGES DE ESTADO (pedidos, órdenes médicas) ===== */
+.badge-estado {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.badge-estado--exito { background: #DCFCE7; color: #16A34A; }
+.badge-estado--advertencia { background: #FEF3C7; color: #D97706; }
+.badge-estado--error { background: #FEE2E2; color: #DC2626; }
+.badge-estado--info { background: var(--color-secundario-claro); color: var(--color-secundario); }
+.badge-estado--neutro { background: #F3F4F6; color: #6B7280; }
+
+/* ===== TARJETAS EXPANDIBLES (historial, órdenes médicas) ===== */
+.tarjeta-expandible {
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-md);
+  margin-bottom: var(--espacio-md);
+  overflow: hidden;
+}
+
+.tarjeta-expandible__cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--espacio-md);
+  padding: var(--espacio-lg);
+  cursor: pointer;
+  background: #fff;
+}
+
+.tarjeta-expandible__cabecera:hover {
+  background: var(--color-fondo-alterno);
+}
+
+.tarjeta-expandible__titulo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.tarjeta-expandible__flecha {
+  transition: transform 0.2s ease;
+  color: var(--color-texto-suave);
+  font-size: 0.8rem;
+}
+
+.tarjeta-expandible--abierta .tarjeta-expandible__flecha {
+  transform: rotate(180deg);
+}
+
+.tarjeta-expandible__cuerpo {
+  display: none;
+  padding: 0 var(--espacio-lg) var(--espacio-lg);
+  border-top: 1px solid var(--color-borde);
+}
+
+.tarjeta-expandible--abierta .tarjeta-expandible__cuerpo {
+  display: block;
+  padding-top: var(--espacio-md);
+}
+
+.item-linea {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--espacio-sm);
+  padding: 8px 0;
+  border-bottom: 1px solid var(--color-borde);
+  font-size: 0.85rem;
+}
+
+.item-linea:last-child {
+  border-bottom: none;
+}
+
+.item-linea__nombre {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.texto-extraido-caja {
+  background: var(--color-fondo-alterno);
+  padding: 12px;
+  border-radius: var(--radio-sm);
+  font-size: 0.8rem;
+  white-space: pre-wrap;
+  max-height: 160px;
+  overflow-y: auto;
+  color: var(--color-texto-suave);
+  margin: var(--espacio-sm) 0 var(--espacio-md);
+}
+/* ===== TARJETAS DE PEDIDO (Mis pedidos) ===== */
+.pedido-card {
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-md);
+  margin-bottom: var(--espacio-md);
+  overflow: hidden;
+  background: #fff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pedido-card:hover {
+  border-color: var(--color-primario);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+.pedido-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--espacio-md);
+  padding: var(--espacio-md) var(--espacio-lg);
+  background: var(--color-fondo-alterno);
+  border-bottom: 1px solid var(--color-borde);
+  font-size: 0.9rem;
+}
+
+.pedido-card__body {
+  padding: var(--espacio-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pedido-card__body p {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--color-texto-suave);
+}
+
+.pedido-card__body p span {
+  flex-shrink: 0;
+}
+
+/* ===== SECCIÓN SEPARADA DENTRO DE UN PANEL (perfil) ===== */
+.user-panel__seccion {
+  margin-top: var(--espacio-2xl);
+  padding-top: var(--espacio-xl);
+  border-top: 1px solid var(--color-borde);
+}
+
+.user-panel__subtitulo-seccion {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: var(--espacio-sm);
+}
+
+/* ===== PANELES DE PESTAÑAS (calificar) ===== */
+.tab-panel {
+  padding-top: var(--espacio-lg);
+}
+/* ===== ICONOS DEL MENÚ LATERAL ===== */
+.user-sidebar__link i {
+  font-size: 1.05rem;
+  width: 20px;
+  text-align: center;
+  color: var(--color-texto-suave);
+  flex-shrink: 0;
+  transition: color 0.18s ease;
+}
+
+.user-sidebar__link:hover i,
+.user-sidebar__link--activo i {
+  color: var(--color-primario);
+}
+
+.user-sidebar__logout i {
+  font-size: 1.05rem;
+  width: 20px;
+  text-align: center;
+  flex-shrink: 0;
+}

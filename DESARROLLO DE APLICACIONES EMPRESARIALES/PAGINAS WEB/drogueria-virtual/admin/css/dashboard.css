@@ -1,0 +1,218 @@
+/* ============================================================
+   DASHBOARD ADMINISTRATIVO
+   Hoja aparte: no toca admin.css, que ya funciona.
+   ============================================================ */
+
+/* ===== BARRA DE FILTROS ===== */
+.dash-filtros {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--espacio-md);
+  flex-wrap: wrap;
+  background: #fff;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-md);
+  padding: var(--espacio-md) var(--espacio-lg);
+  margin-bottom: var(--espacio-lg);
+}
+
+.dash-filtro { display: flex; flex-direction: column; gap: 5px; }
+
+.dash-filtro label {
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-texto-suave);
+}
+
+.dash-filtro input {
+  padding: 9px 12px;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-sm);
+  font-family: inherit;
+  font-size: 0.87rem;
+  color: var(--color-texto);
+}
+
+.dash-filtro input:focus { outline: none; border-color: var(--color-primario); }
+
+.dash-filtros__acciones { display: flex; gap: 8px; margin-left: auto; }
+
+.dash-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 16px;
+  border-radius: var(--radio-sm);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background 0.18s ease, border-color 0.18s ease;
+}
+
+.dash-btn--primario { background: var(--color-primario); color: #fff; }
+.dash-btn--primario:hover { background: var(--color-primario-oscuro); }
+
+.dash-btn--claro {
+  background: #fff;
+  border-color: var(--color-borde);
+  color: var(--color-texto);
+}
+.dash-btn--claro:hover { background: var(--color-fondo-alterno); }
+
+.dash-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* ===== TARJETAS DE MÉTRICAS ===== */
+.admin-stat-card__icono i { font-size: 1.3rem; }
+.admin-stat-card__icono--verde  i { color: #16A34A; }
+.admin-stat-card__icono--azul   i { color: var(--color-secundario); }
+.admin-stat-card__icono--naranja i { color: #EA580C; }
+.admin-stat-card__icono--morado i { color: #7C3AED; }
+.admin-stat-card__icono--teal   { background: var(--color-primario-claro); }
+.admin-stat-card__icono--teal   i { color: var(--color-primario); }
+
+.admin-stat-card__pie {
+  font-size: 0.74rem;
+  color: var(--color-texto-suave);
+  margin-top: 2px;
+}
+
+/* ===== REJILLAS DEL DASHBOARD ===== */
+.dash-grid-graficas {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: var(--espacio-lg);
+  margin-bottom: var(--espacio-lg);
+}
+
+.dash-grid-tablas {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: var(--espacio-lg);
+}
+
+/* Alto fijo: sin esto Chart.js crece sin control en cada redibujado */
+.dash-lienzo { position: relative; height: 280px; }
+.dash-lienzo--bajo { height: 240px; }
+
+/* ===== ESTADO VACÍO ===== */
+.dash-vacio {
+  text-align: center;
+  color: var(--color-texto-suave);
+  font-size: 0.87rem;
+  padding: var(--espacio-2xl) var(--espacio-md);
+}
+
+.dash-vacio i {
+  display: block;
+  font-size: 2rem;
+  margin-bottom: 10px;
+  opacity: 0.35;
+}
+
+/* ===== TOP DE PRODUCTOS ===== */
+.dash-top-fila {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--color-borde);
+}
+
+.dash-top-fila:last-child { border-bottom: none; }
+
+.dash-top-fila__puesto {
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  background: var(--color-fondo-alterno);
+  color: var(--color-texto-suave);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.76rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.dash-top-fila:first-child .dash-top-fila__puesto {
+  background: var(--color-primario);
+  color: #fff;
+}
+
+.dash-top-fila__nombre {
+  flex: 1;
+  font-size: 0.87rem;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dash-top-fila__datos { text-align: right; flex-shrink: 0; }
+
+.dash-top-fila__unidades { font-size: 0.86rem; font-weight: 700; }
+
+.dash-top-fila__ingresos {
+  font-size: 0.74rem;
+  color: var(--color-texto-suave);
+}
+
+/* ===== ESTADO DE CARGA ===== */
+.dash-cargando {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: var(--color-texto-suave);
+  font-size: 0.87rem;
+  padding: var(--espacio-xl) 0;
+}
+
+.dash-spinner {
+  width: 17px;
+  height: 17px;
+  border: 2px solid var(--color-borde);
+  border-top-color: var(--color-primario);
+  border-radius: 50%;
+  animation: dashGirar 0.7s linear infinite;
+}
+
+@keyframes dashGirar { to { transform: rotate(360deg); } }
+
+/* ===== ICONOS EN EL MENÚ LATERAL ===== */
+.admin-sidebar__link i {
+  width: 20px;
+  text-align: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.admin-sidebar__logout i { margin-right: 8px; }
+
+.admin-sidebar__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.admin-sidebar__logo-marca {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: var(--color-primario);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+@media (max-width: 1200px) {
+  .dash-grid-graficas,
+  .dash-grid-tablas { grid-template-columns: 1fr; }
+}

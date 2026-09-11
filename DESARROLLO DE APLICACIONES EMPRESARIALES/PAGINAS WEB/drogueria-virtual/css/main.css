@@ -1,0 +1,781 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--fuente-texto);
+  color: var(--color-texto);
+  background-color: var(--color-fondo);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--fuente-titulos);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font-family: var(--fuente-texto);
+  cursor: pointer;
+  border: none;
+}
+
+/* Contenedor general */
+.contenedor {
+  width: 100%;
+  max-width: var(--ancho-maximo);
+  margin: 0 auto;
+  padding: 0 var(--espacio-md);
+}
+
+/* Botones reutilizables */
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: var(--radio-md);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.btn-primario {
+  background-color: var(--color-primario);
+  color: #fff;
+}
+.btn-primario:hover {
+  background-color: var(--color-primario-oscuro);
+}
+
+.btn-acento {
+  background-color: var(--color-acento);
+  color: #fff;
+}
+.btn-acento:hover {
+  background-color: var(--color-acento-oscuro);
+}
+
+.btn-secundario {
+  background-color: transparent;
+  color: var(--color-primario);
+  border: 1.5px solid var(--color-primario);
+}
+.btn-secundario:hover {
+  background-color: var(--color-primario-claro);
+}
+
+/* Tarjeta genérica */
+.tarjeta {
+  background: #fff;
+  border-radius: var(--radio-md);
+  box-shadow: var(--sombra-suave);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.tarjeta:hover {
+  box-shadow: var(--sombra-media);
+  transform: translateY(-2px);
+}
+
+/* Sección genérica */
+.seccion {
+  padding: var(--espacio-2xl) 0;
+}
+
+.seccion-titulo {
+  font-size: 1.8rem;
+  margin-bottom: var(--espacio-lg);
+  text-align: center;
+}
+
+/* ===== BANNER PRINCIPAL ===== */
+.banner {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--color-primario) 0%, var(--color-secundario) 100%);
+  padding: var(--espacio-2xl) 0;
+  color: #fff;
+}
+
+.banner::before,
+.banner::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.banner::before {
+  width: 320px;
+  height: 320px;
+  top: -120px;
+  right: -80px;
+}
+
+.banner::after {
+  width: 220px;
+  height: 220px;
+  bottom: -100px;
+  right: 200px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.banner__contenido {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: var(--espacio-xl);
+}
+
+.banner__etiqueta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: var(--espacio-md);
+  backdrop-filter: blur(4px);
+}
+
+.banner__titulo {
+  font-size: 2.6rem;
+  line-height: 1.15;
+  margin-bottom: var(--espacio-md);
+}
+
+.banner__titulo span {
+  color: #FFD9CE;
+}
+
+.banner__texto {
+  font-size: 1.05rem;
+  opacity: 0.92;
+  margin-bottom: var(--espacio-lg);
+  max-width: 480px;
+}
+
+.banner__acciones {
+  display: flex;
+  gap: var(--espacio-md);
+  margin-bottom: var(--espacio-lg);
+}
+
+.banner__acciones .btn-acento {
+  box-shadow: 0 8px 20px rgba(255, 107, 74, 0.35);
+}
+
+.banner__acciones .btn-secundario {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+  color: #fff;
+}
+.banner__acciones .btn-secundario:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.banner__confianza {
+  display: flex;
+  gap: var(--espacio-lg);
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+.banner__confianza li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.banner__visual {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner__card-flotante {
+  background: #fff;
+  color: var(--color-texto);
+  border-radius: var(--radio-lg);
+  padding: var(--espacio-lg);
+  box-shadow: var(--sombra-media);
+  width: 100%;
+  max-width: 320px;
+}
+
+.banner__card-flotante h4 {
+  font-size: 0.95rem;
+  margin-bottom: var(--espacio-sm);
+}
+
+.banner__card-flotante-icono {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radio-md);
+  background: var(--color-primario-claro);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  margin-bottom: var(--espacio-sm);
+}
+
+/* ===== CATEGORÍAS ===== */
+.categorias {
+  padding: var(--espacio-2xl) 0 var(--espacio-lg);
+}
+
+.categorias__grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--espacio-md);
+}
+
+.categoria-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--espacio-lg) var(--espacio-sm);
+  text-align: center;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-md);
+  background: #fff;
+  cursor: pointer;
+  transition: border-color 0.22s ease, box-shadow 0.22s ease, transform 0.22s ease;
+}
+
+.categoria-card:hover {
+  border-color: var(--color-primario);
+  box-shadow: 0 8px 24px rgba(11, 122, 117, 0.12);
+  transform: translateY(-4px);
+}
+
+.categoria-card__icono {
+  width: 58px;
+  height: 58px;
+  margin-bottom: var(--espacio-sm);
+  border-radius: 16px;
+  background: var(--color-primario-claro);
+  color: var(--color-primario);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.65rem;
+  transition: background 0.22s ease, color 0.22s ease;
+}
+
+.categoria-card:hover .categoria-card__icono {
+  background: var(--color-primario);
+  color: #fff;
+}
+
+.categoria-card__nombre {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--color-texto);
+  line-height: 1.3;
+}
+
+/* ===== BENEFICIOS ===== */
+.beneficios {
+  background: var(--color-fondo-alterno);
+}
+
+.beneficios__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--espacio-lg);
+}
+
+.beneficio-card {
+  padding: var(--espacio-lg);
+  text-align: left;
+}
+
+.beneficio-card__icono {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radio-md);
+  background: var(--color-secundario-claro);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  margin-bottom: var(--espacio-md);
+}
+
+.beneficio-card h3 {
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
+
+.beneficio-card p {
+  font-size: 0.85rem;
+  color: var(--color-texto-suave);
+}
+
+/* ===== ENCABEZADO DE SECCIÓN CON LINK ===== */
+.seccion__cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--espacio-lg);
+}
+
+.seccion__cabecera .seccion-titulo {
+  margin-bottom: 0;
+  text-align: left;
+}
+
+.seccion__ver-todo {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-primario);
+}
+.seccion__ver-todo:hover {
+  color: var(--color-acento);
+}
+
+/* ===== CTA CHATBOT FLOTANTE ===== */
+.chatbot-flotante {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--color-acento);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  box-shadow: 0 8px 20px rgba(255, 107, 74, 0.4);
+  z-index: 200;
+  transition: transform 0.2s ease;
+}
+.chatbot-flotante:hover {
+  transform: scale(1.08);
+}
+
+/* ===== AVATAR DE USUARIO EN EL HEADER ===== */
+.header__avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--color-primario);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+/* ===== WIDGET DE CHATBOT ===== */
+.chatbot-widget {
+  position: fixed;
+  bottom: 96px;
+  right: 24px;
+  width: 360px;
+  max-width: calc(100vw - 48px);
+  height: 500px;
+  max-height: calc(100vh - 140px);
+  background: #fff;
+  border-radius: var(--radio-lg);
+  box-shadow: var(--sombra-media);
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 300;
+}
+
+.chatbot-widget--abierto {
+  display: flex;
+}
+
+.chatbot-widget__header {
+  background: linear-gradient(135deg, var(--color-primario) 0%, var(--color-secundario) 100%);
+  color: #fff;
+  padding: var(--espacio-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chatbot-widget__header-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chatbot-widget__avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.chatbot-widget__titulo {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.chatbot-widget__estado {
+  font-size: 0.72rem;
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.chatbot-widget__estado-punto {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4ADE80;
+}
+
+.chatbot-widget__cerrar {
+  background: none;
+  color: #fff;
+  font-size: 1.2rem;
+  opacity: 0.85;
+}
+
+.chatbot-widget__mensajes {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--espacio-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-sm);
+  background: var(--color-fondo-alterno);
+}
+
+.chatbot-mensaje {
+  max-width: 82%;
+  padding: 10px 14px;
+  border-radius: var(--radio-md);
+  font-size: 0.87rem;
+  line-height: 1.45;
+  white-space: pre-wrap;
+}
+
+.chatbot-mensaje--bot {
+  align-self: flex-start;
+  background: #fff;
+  border: 1px solid var(--color-borde);
+  border-bottom-left-radius: 4px;
+}
+
+.chatbot-mensaje--usuario {
+  align-self: flex-end;
+  background: var(--color-primario);
+  color: #fff;
+  border-bottom-right-radius: 4px;
+}
+
+.chatbot-mensaje--escalado {
+  align-self: center;
+  background: #FEF3C7;
+  color: #92400E;
+  font-size: 0.78rem;
+  text-align: center;
+  border-radius: 999px;
+  padding: 6px 14px;
+}
+
+.chatbot-sugerencias {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0 var(--espacio-md) var(--espacio-sm);
+  background: var(--color-fondo-alterno);
+}
+
+.chatbot-sugerencia {
+  background: #fff;
+  border: 1px solid var(--color-borde);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 0.78rem;
+  color: var(--color-primario);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.chatbot-sugerencia:hover {
+  background: var(--color-primario-claro);
+}
+
+.chatbot-widget__input-area {
+  display: flex;
+  gap: 8px;
+  padding: var(--espacio-sm) var(--espacio-md);
+  border-top: 1px solid var(--color-borde);
+  background: #fff;
+}
+
+.chatbot-widget__input-area input {
+  flex: 1;
+  border: 1.5px solid var(--color-borde);
+  border-radius: var(--radio-md);
+  padding: 10px 14px;
+  font-size: 0.87rem;
+  outline: none;
+  font-family: var(--fuente-texto);
+}
+
+.chatbot-widget__input-area input:focus {
+  border-color: var(--color-primario);
+}
+
+.chatbot-widget__enviar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--color-primario);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.chatbot-widget__enviar:hover {
+  background: var(--color-primario-oscuro);
+}
+
+.chatbot-widget__escribiendo {
+  align-self: flex-start;
+  font-size: 0.8rem;
+  color: var(--color-texto-suave);
+  padding: 0 var(--espacio-md);
+  font-style: italic;
+}
+
+/* ============================================================
+   ===== MEJORAS PARA TARJETAS DE PRODUCTO (CATÁLOGO) =====
+   ============================================================ */
+
+/* Imagen en tarjeta de producto */
+.producto-card__img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px 8px 0 0;
+  background-color: #f8f9fa;
+}
+
+/* Fallback con icono */
+.producto-card .producto-card__imagen {
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  background: #f8f9fa;
+  border-radius: 8px 8px 0 0;
+}
+
+/* Tarjeta con altura uniforme */
+.producto-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.producto-card:hover {
+  box-shadow: var(--sombra-media);
+  transform: translateY(-2px);
+}
+
+/* Cuerpo de la tarjeta */
+.producto-card__info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: var(--espacio-md);
+}
+
+.producto-card__nombre {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.producto-card__categoria {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-texto-suave);
+  margin-bottom: 4px;
+}
+
+.producto-card__rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.85rem;
+  color: var(--color-texto-suave);
+  margin-bottom: 8px;
+}
+.producto-card__rating .estrellas {
+  color: #f59e0b;
+}
+
+.producto-card__precios {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.producto-card__precio {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-primario);
+}
+.producto-card__precio-anterior {
+  font-size: 0.85rem;
+  color: var(--color-texto-suave);
+  text-decoration: line-through;
+}
+
+.producto-card__disponibilidad {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-exito);
+  margin-bottom: 10px;
+}
+.producto-card__disponibilidad--agotado {
+  color: var(--color-error);
+}
+
+.producto-card__acciones {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+}
+.producto-card__acciones .btn {
+  flex: 1;
+  padding: 8px 12px;
+  font-size: 0.8rem;
+  text-align: center;
+}
+.producto-card__acciones .btn-primario {
+  background-color: var(--color-primario);
+  color: #fff;
+}
+.producto-card__acciones .btn-primario:hover {
+  background-color: var(--color-primario-oscuro);
+}
+.producto-card__acciones .btn-secundario {
+  border: 1px solid var(--color-borde);
+  color: var(--color-texto);
+}
+.producto-card__acciones .btn-secundario:hover {
+  background-color: var(--color-fondo-alterno);
+}
+
+/* Badges */
+.producto-card__badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: var(--color-acento);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  z-index: 2;
+}
+.producto-card__badge--descuento {
+  background: #dc2626;
+}
+
+.producto-card__fav {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 2;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+.producto-card__fav:hover {
+  opacity: 1;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+  .chatbot-widget {
+    width: calc(100vw - 24px);
+    right: 12px;
+    bottom: 84px;
+    height: calc(100vh - 160px);
+  }
+
+  /* ===== ICONOS EN BENEFICIOS Y BANNER ===== */
+.beneficio-card__icono {
+  color: var(--color-secundario);
+  font-size: 1.5rem;
+}
+
+.banner__card-flotante-icono {
+  color: var(--color-primario);
+  font-size: 1.5rem;
+}
+
+.banner__confianza li i {
+  font-size: 1rem;
+  opacity: 0.95;
+}
+
+.seccion__ver-todo {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.footer__lista li i {
+  margin-right: 6px;
+  opacity: 0.8;
+}
+}

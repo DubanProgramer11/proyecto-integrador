@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productos - Panel Administrativo VitalFarma</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/main.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body class="admin-body">
+
+  <div class="admin-layout">
+
+
+    <!-- CONTENIDO -->
+    <div>
+      <header class="admin-topbar">
+        <h1 class="admin-topbar__titulo">Gestión de productos</h1>
+        <div class="admin-topbar__usuario">
+          <div>
+            <div id="adminNombre" style="font-weight:600;">Cargando...</div>
+            <span class="admin-topbar__rol" id="adminRol"></span>
+          </div>
+          <div class="admin-topbar__avatar" id="adminAvatar">A</div>
+        </div>
+      </header>
+
+      <main class="admin-contenido">
+
+        <div class="admin-panel">
+          <div class="admin-toolbar">
+            <div class="admin-toolbar__buscador">
+              🔍 <input type="text" id="productosAdminBuscador" placeholder="Buscar producto por nombre...">
+            </div>
+            <button class="btn btn-primario" id="btnNuevoProducto">+ Nuevo producto</button>
+          </div>
+
+          <div class="admin-tabla-wrapper">
+            <table class="admin-tabla">
+              <thead>
+                <tr>
+                  <th>Producto</th>
+                  <th>Categoría</th>
+                  <th>Precio</th>
+                  <th>Stock</th>
+                  <th>Estado</th>
+                  <th>Rating</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="productosAdminTabla"></tbody>
+            </table>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- MODAL: CREAR / EDITAR PRODUCTO -->
+  <div class="admin-modal-fondo" id="modalProducto">
+    <div class="admin-modal">
+      <div class="admin-modal__cabecera">
+        <h2 class="admin-modal__titulo" id="modalProductoTitulo">Nuevo producto</h2>
+        <button class="admin-modal__cerrar" id="cerrarModalProducto">✕</button>
+      </div>
+
+      <form class="admin-modal__form" id="formProducto">
+        <input type="hidden" id="productoId">
+
+        <div>
+          <label for="productoNombre">Nombre del producto</label>
+          <input type="text" id="productoNombre" placeholder="Ej: Acetaminofén 500mg x 20 tabletas" required>
+        </div>
+
+        <div>
+          <label for="productoDescripcion">Descripción</label>
+          <textarea id="productoDescripcion" rows="2" placeholder="Descripción breve del producto..."></textarea>
+        </div>
+
+        <div class="admin-modal__fila-doble">
+          <div>
+            <label for="productoCategoria">Categoría</label>
+            <select id="productoCategoria">
+              <!-- Se llenará dinámicamente desde la BD -->
+            </select>
+          </div>
+          <div>
+            <label for="productoIcono">Ícono (emoji)</label>
+            <input type="text" id="productoIcono" placeholder="💊" maxlength="2">
+          </div>
+        </div>
+
+        <div class="admin-modal__fila-doble">
+          <div>
+            <label for="productoPrecio">Precio</label>
+            <input type="number" id="productoPrecio" placeholder="8900" min="0" step="0.01" required>
+          </div>
+          <div>
+            <label for="productoPrecioAnterior">Precio anterior (opcional)</label>
+            <input type="number" id="productoPrecioAnterior" placeholder="Dejar vacío si no aplica" min="0" step="0.01">
+          </div>
+        </div>
+
+        <div class="admin-modal__fila-doble">
+          <div>
+            <label for="productoStock">Cantidad en stock</label>
+            <input type="number" id="productoStock" placeholder="0" min="0" required>
+          </div>
+          <div>
+            <label for="productoBadge">Etiqueta (badge)</label>
+            <input type="text" id="productoBadge" placeholder="Ej: Descuento, Nuevo, Más vendido">
+          </div>
+        </div>
+
+        <div>
+          <label for="productoImagen">URL de imagen (opcional)</label>
+          <input type="text" id="productoImagen" placeholder="https://ejemplo.com/imagen.jpg">
+        </div>
+
+        <div style="display:flex; gap:20px; align-items:center; flex-wrap:wrap;">
+          <label style="display:flex; align-items:center; gap:8px; font-size:0.85rem; font-weight:500;">
+            <input type="checkbox" id="productoDisponible" style="width:auto;" checked>
+            Producto disponible
+          </label>
+          <label style="display:flex; align-items:center; gap:8px; font-size:0.85rem; font-weight:500;">
+            <input type="checkbox" id="productoRequiereOrden" style="width:auto;">
+            Requiere orden médica
+          </label>
+        </div>
+
+        <div class="admin-modal__acciones">
+          <button type="submit" class="btn btn-primario">Guardar producto</button>
+          <button type="button" class="btn btn-secundario" id="cancelarModalProducto">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/admin.js"></script>
+  <script src="../../js/api.js"></script>
+  <script src="../js/productos-admin.js"></script>
+  <script src="../../js/idioma.js"></script>
+</body>
+
+</html>

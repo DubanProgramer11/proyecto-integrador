@@ -1,0 +1,238 @@
+RAW: {"email":"admin@vitalfarma.com","password":"admin123"}
+DECODED: Array
+(
+    [email] => admin@vitalfarma.com
+    [password] => admin123
+)
+
+RAW: {"email":"superadmin@vitalfarma.com","password":"admin123"}
+DECODED: Array
+(
+    [email] => superadmin@vitalfarma.com
+    [password] => admin123
+)
+
+RAW: {"email":"duban@gmail.com","password":"duban123"}
+DECODED: Array
+(
+    [email] => duban@gmail.com
+    [password] => duban123
+)
+
+RAW: {"email":"admin@vitalfarma.com","password":"admin123"}
+DECODED: Array
+(
+    [email] => admin@vitalfarma.com
+    [password] => admin123
+)
+
+RAW: {"email":"admin@vitalfarma.com","password":"admin123"}
+DECODED: Array
+(
+    [email] => admin@vitalfarma.com
+    [password] => admin123
+)
+
+RAW: {"email":"duban@gmail.com","password":"duban123"}
+DECODED: Array
+(
+    [email] => duban@gmail.com
+    [password] => duban123
+)
+
+RAW: {"email":"superadmin@vitalfarma.com","password":"admin123"}
+DECODED: Array
+(
+    [email] => superadmin@vitalfarma.com
+    [password] => admin123
+)
+
+RAW: {"email":"duban@gmail.com","password":"duban123"}
+DECODED: Array
+(
+    [email] => duban@gmail.com
+    [password] => duban123
+)
+
+RAW: {"email":"admin@vitalfarma.com","password":"admin123"}
+DECODED: Array
+(
+    [email] => admin@vitalfarma.com
+    [password] => admin123
+)
+
+RAW: {"email":"duban@gmail.com","password":"duban123"}
+DECODED: Array
+(
+    [email] => duban@gmail.com
+    [password] => duban123
+)
+
+RAW: {"email":"admin@vitalfarma.com","password":"admin123"}
+DECODED: Array
+(
+    [email] => admin@vitalfarma.com
+    [password] => admin123
+)
+
+RAW: {"email":"duban@gmail.com","password":"duban123"}
+DECODED: Array
+(
+    [email] => duban@gmail.com
+    [password] => duban123
+)
+
+RAW: {"email":"admin@vitalfarma.com","password":"admin123"}
+DECODED: Array
+(
+    [email] => admin@vitalfarma.com
+    [password] => admin123
+)
+
+RAW: {"email":"duban@gmail.com","password":"duban123"}
+DECODED: Array
+(
+    [email] => duban@gmail.com
+    [password] => duban123
+)
+
+RAW: {"email":"duban@gmail.com","password":"duban123"}
+DECODED: Array
+(
+    [email] => duban@gmail.com
+    [password] => duban123
+)
+
+RAW: {"email":"admin@vitalfarma.com","password":"admin123"}
+DECODED: Array
+(
+    [email] => admin@vitalfarma.com
+    [password] => admin123
+)
+
+RAW: {"email":"duban@gmail.com","password":"duban123"}
+DECODED: Array
+(
+    [email] => duban@gmail.com
+    [password] => duban123
+)
+
+RAW: {"email":"admin@vitalfarma.com","password":"admin123"}
+DECODED: Array
+(
+    [email] => admin@vitalfarma.com
+    [password] => admin123
+)
+
+RAW: {"email":"duban@gmail.com","password":"duban123"}
+DECODED: Array
+(
+    [email] => duban@gmail.com
+    [password] => duban123
+)
+
+RAW: {"email":"duban@gmail.com","password":"duban123"}
+DECODED: Array
+(
+    [email] => duban@gmail.com
+    [password] => duban123
+)
+
+RAW: {"email":"duban@gmail.com","password":"duban123"}
+DECODED: Array
+(
+    [email] => duban@gmail.com
+    [password] => duban123
+)
+
+RAW: {"email":"duban@gmail.com","password":"duban123"}
+DECODED: Array
+(
+    [email] => duban@gmail.com
+    [password] => duban123
+)
+
+RAW: {"email":"duban@gmail.com","password":"duban123"}
+DECODED: Array
+(
+    [email] => duban@gmail.com
+    [password] => duban123
+)
+
+RAW: {"email":"duban@gmail.com","password":"duban123"}
+DECODED: Array
+(
+    [email] => duban@gmail.com
+    [password] => duban123
+)
+
+RAW: {"email":"duban@gmail.com","password":"duban123"}
+DECODED: Array
+(
+    [email] => duban@gmail.com
+    [password] => duban123
+)
+
+RAW: {"email":"duban@gmail.com","password":"duban123"}
+DECODED: Array
+(
+    [email] => duban@gmail.com
+    [password] => duban123
+)
+
+RAW: {"email":"duban@gmail.com","password":"duban123"}
+DECODED: Array
+(
+    [email] => duban@gmail.com
+    [password] => duban123
+)
+
+RAW: {"email":"duban@gmail.com","password":"duban123"}
+DECODED: Array
+(
+    [email] => duban@gmail.com
+    [password] => duban123
+)
+
+RAW: {"email":"duban@gmail.com","password":"duban123"}
+DECODED: Array
+(
+    [email] => duban@gmail.com
+    [password] => duban123
+)
+
+RAW: {"email":"duban@gmail.com","password":"duban123"}
+DECODED: Array
+(
+    [email] => duban@gmail.com
+    [password] => duban123
+)
+
+RAW: {"email":"duban@gmail.com","password":"duban123"}
+DECODED: Array
+(
+    [email] => duban@gmail.com
+    [password] => duban123
+)
+
+RAW: {"email":"duban@gmail.com","password":"duban123"}
+DECODED: Array
+(
+    [email] => duban@gmail.com
+    [password] => duban123
+)
+
+RAW: {"email":"duban@gmail.com","password":"duban123"}
+DECODED: Array
+(
+    [email] => duban@gmail.com
+    [password] => duban123
+)
+
+RAW: {"email":"duban@gmail.com","password":"duban123"}
+DECODED: Array
+(
+    [email] => duban@gmail.com
+    [password] => duban123
+)
+

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subir orden médica - VitalFarma</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <link rel="stylesheet" href="../css/carrito.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+
+  <!-- HEADER (igual al del resto del sitio) -->
+  <<header class="header">
+    <div class="contenedor header__contenido">
+      <a href="../../index.html" class="header__logo">
+        <span class="header__logo-marca"><i class="bi bi-plus-lg"></i></span>
+        <span class="header__logo-texto">Vital<span>Farma</span></span>
+      </a>
+
+      <div class="header__buscador">
+        <i class="bi bi-search header__buscador-icono"></i>
+        <input type="text" data-i18n="buscar_placeholder" placeholder="Buscar productos, marcas, categorías...">
+      </div>
+
+      <div class="header__acciones">
+        <!-- Sin data-i18n: main.js reemplaza el contenido con la inicial del usuario -->
+        <a href="../../login.html" class="header__icono" id="headerCuenta"
+           data-i18n-title="mi_cuenta" title="Mi cuenta"><i class="bi bi-person"></i></a>
+        <!-- Sin data-i18n: contiene el contador del carrito -->
+        <a href="../../pages/carrito.html" class="header__icono"
+           data-i18n-title="carrito" title="Carrito">
+          <i class="bi bi-bag"></i>
+          <span class="header__carrito-contador">0</span>
+        </a>
+        <button class="header__menu-toggle" id="menuToggle"><i class="bi bi-list"></i></button>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <div class="contenedor">
+        <ul class="nav__lista" id="navLista">
+          <li><a href="catalogo.html" class="nav__link" data-i18n="nav_medicamentos">Medicamentos</a></li>
+          <li><a href="catalogo.html" class="nav__link" data-i18n="nav_cuidado_personal">Cuidado personal</a></li>
+          <li><a href="catalogo.html" class="nav__link" data-i18n="nav_vitaminas">Vitaminas</a></li>
+          <li><a href="catalogo.html" class="nav__link" data-i18n="nav_higiene">Higiene</a></li>
+          <li><a href="catalogo.html" class="nav__link" data-i18n="nav_bebes">Bebés</a></li>
+          <li><a href="catalogo.html" class="nav__link" data-i18n="nav_primeros_auxilios">Primeros auxilios</a></li>
+          <li><a href="orden-medica.html" class="nav__link" data-i18n="subir_orden">Subir orden médica</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <section class="seccion">
+    <div class="contenedor" style="max-width: 700px;">
+      <h1 data-i18n="orden_titulo">Sube tu orden médica</h1>
+      <p style="color:var(--color-texto-suave); margin-bottom: var(--espacio-lg);" data-i18n="orden_intro">
+        Analizamos automáticamente tu fórmula y te sugerimos los medicamentos disponibles en nuestro catálogo.
+        No diagnosticamos ni decidimos por ti — tú confirmas qué agregar al carrito.
+      </p>
+
+      <div class="orden-medica-aviso" data-i18n="orden_aviso">
+        ⚠️ Esta función es opcional. Puedes comprar medicamentos de venta libre sin necesidad de subir ninguna orden.
+      </div>
+
+      <div class="user-panel">
+
+        <div class="orden-medica-upload" id="zonaSubida">
+          <div class="orden-medica-upload__icono">📋</div>
+          <p data-i18n="orden_arrastra">Arrastra tu imagen aquí, o</p>
+          <button type="button" class="btn btn-primario" id="btnSeleccionarArchivo"
+                  style="margin-top: var(--espacio-sm);" data-i18n="orden_seleccionar">
+            📁 Seleccionar archivo
+          </button>
+          <p style="font-size:0.8rem; color:var(--color-texto-suave); margin-top:var(--espacio-sm);" data-i18n="orden_formatos">JPG, PNG o PDF — máximo 5MB</p>
+          <input type="file" id="inputArchivo" accept=".jpg,.jpeg,.png,.pdf" style="display:none;">
+          <img id="previewImagen" class="orden-medica-preview" alt="">
+        </div>
+
+        <button class="btn btn-primario" id="btnAnalizar"
+                style="width:100%; margin-top: var(--espacio-md); display:none;" data-i18n="orden_analizar">
+          Analizar orden médica
+        </button>
+
+        <!-- Sin data-i18n: los mensajes los escribe orden-medica.js -->
+        <div class="auth-mensaje-general" id="ordenMensaje" style="margin-top: var(--espacio-md);"></div>
+
+        <div class="orden-medica-resultado" id="resultadoAnalisis">
+          <h3 style="margin-top: var(--espacio-lg); margin-bottom: var(--espacio-sm); font-size:1rem;" data-i18n="orden_texto_detectado">Texto detectado en tu orden:</h3>
+          <div class="orden-medica-texto-extraido" id="textoExtraido"></div>
+
+          <h3 style="margin-bottom: var(--espacio-sm); font-size:1rem;" data-i18n="orden_encontrados">Medicamentos encontrados en nuestro catálogo:</h3>
+          <div id="coincidenciasLista"></div>
+
+          <button class="btn btn-acento" id="btnAgregarSeleccionados"
+                  style="width:100%; margin-top: var(--espacio-md);" data-i18n="orden_agregar_seleccionados">
+            Agregar seleccionados al carrito
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="contenedor">
+      <div class="footer__grid">
+        <div>
+          <h3 class="footer__titulo">VitalFarma</h3>
+          <p style="font-size:0.9rem; color:#D1D5DB;" data-i18n="footer_tagline">Tu droguería virtual de confianza.</p>
+        </div>
+        <div>
+          <h3 class="footer__titulo" data-i18n="footer_enlaces">Enlaces</h3>
+          <ul class="footer__lista">
+            <li><a href="catalogo.html" data-i18n="catalogo">Catálogo</a></li>
+            <li><a href="nosotros.html" data-i18n="footer_nosotros">Nosotros</a></li>
+            <li><a href="contacto.html" data-i18n="footer_contacto">Contacto</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer__titulo" data-i18n="mi_cuenta">Mi cuenta</h3>
+          <ul class="footer__lista">
+            <li><a href="../login.html" data-i18n="iniciar_sesion">Iniciar sesión</a></li>
+            <li><a href="../registro.html" data-i18n="footer_crear_cuenta">Crear cuenta</a></li>
+            <li><a href="../user/pages/pedidos.html" data-i18n="mis_pedidos">Mis pedidos</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer__titulo" data-i18n="footer_contacto">Contacto</h3>
+          <ul class="footer__lista">
+            <li>info@vitalfarma.com</li>
+            <li>+57 300 000 0000</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom" data-i18n="footer_derechos">
+        &copy; 2026 VitalFarma. Todos los derechos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/api.js"></script>
+  <script src="../js/idioma.js"></script>
+  <script src="../js/carrito.js"></script>
+  <script src="../js/productos.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/chatbot.js"></script>
+  <script src="../js/orden-medica.js"></script>
+</body>
+</html>

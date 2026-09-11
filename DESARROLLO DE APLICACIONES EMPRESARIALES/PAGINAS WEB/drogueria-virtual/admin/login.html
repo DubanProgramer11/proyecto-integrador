@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acceso administrativo - VitalFarma</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="css/admin-login.css">
+</head>
+<body>
+
+  <div class="alogin-fondo">
+    <div class="alogin-tarjeta">
+
+      <a href="../index.html" class="alogin-logo">
+        <span class="alogin-logo__marca"><i class="bi bi-plus-lg"></i></span>
+        <span class="alogin-logo__texto">Vital<span>Farma</span></span>
+        <span class="alogin-logo__badge">ADMIN</span>
+      </a>
+
+      <h1 class="alogin-titulo">Panel administrativo</h1>
+      <p class="alogin-subtitulo">Acceso restringido a personal autorizado.</p>
+
+      <div class="alogin-mensaje" id="adminLoginMensaje"></div>
+
+      <form id="formAdminLogin" novalidate>
+        <div class="alogin-campo">
+          <label for="adminLoginEmail">Correo corporativo</label>
+          <div class="alogin-campo__control">
+            <i class="bi bi-envelope alogin-campo__icono"></i>
+            <input type="email" id="adminLoginEmail" placeholder="correo@vitalfarma.com" autocomplete="username">
+          </div>
+        </div>
+
+        <div class="alogin-campo">
+          <label for="adminLoginPassword">Contraseña</label>
+          <div class="alogin-campo__control">
+            <i class="bi bi-lock alogin-campo__icono"></i>
+            <input type="password" id="adminLoginPassword" placeholder="••••••••" autocomplete="current-password">
+            <button type="button" class="alogin-campo__ver" id="btnVerPassword" aria-label="Ver contraseña">
+              <i class="bi bi-eye"></i>
+            </button>
+          </div>
+        </div>
+
+        <button type="submit" class="alogin-btn" id="btnIngresar">
+          <i class="bi bi-box-arrow-in-right"></i> Ingresar al panel
+        </button>
+      </form>
+
+      <p class="alogin-pie">
+        ¿Eres cliente? <a href="../login.html">Inicia sesión en la tienda</a>
+      </p>
+
+      <div class="alogin-aviso">
+        <i class="bi bi-shield-lock"></i> Conexión verificada contra la base de datos
+      </div>
+
+    </div>
+  </div>
+
+  <!-- api.js primero: define apiPost/apiGet que usa el script de abajo -->
+  <script src="../js/api.js"></script>
+  <script src="../js/validaciones.js"></script>
+
+  <script>
+    /* ===================================================
+       LOGIN ADMINISTRATIVO — conectado al backend
+       ---------------------------------------------------
+       No hay usuarios ni contraseñas dentro de este archivo.
+       Las credenciales viajan a backend/api/login.php, que las
+       verifica contra la tabla `usuarios` con password_verify().
+       Si el rol no es admin/superadmin, cerramos la sesión que
+       el backend acaba de abrir y negamos el acceso.
+    =================================================== */
+
+    const ROLES_PERMITIDOS = ['admin', 'superadmin'];
+
+    const form = document.getElementById('formAdminLogin');
+    const mensaje = document.getElementById('adminLoginMensaje');
+
+    function mostrarMensaje(texto, esExito = false) {
+      const icono = esExito ? 'bi-check-circle' : 'bi-exclamation-triangle';
+      mensaje.innerHTML = `<i class="bi ${icono}"></i> <span></span>`;
+      mensaje.querySelector('span').textContent = texto;
+      mensaje.classList.add('alogin-mensaje--visible');
+      mensaje.classList.toggle('alogin-mensaje--exito', esExito);
+    }
+
+    function limpiarMensaje() {
+      mensaje.classList.remove('alogin-mensaje--visible', 'alogin-mensaje--exito');
+    }
+
+    // Ver / ocultar contraseña. Va aquí y no en validaciones.js
+    // porque el markup del ojito es propio de esta página.
+    document.getElementById('btnVerPassword').addEventListener('click', function () {
+      const input = document.getElementById('adminLoginPassword');
+      const oculta = input.type === 'password';
+      input.type = oculta ? 'text' : 'password';
+      this.innerHTML = oculta ? '<i class="bi bi-eye-slash"></i>' : '<i class="bi bi-eye"></i>';
+    });
+
+    document.addEventListener('DOMContentLoaded', async () => {
+
+      /* --- Mensajes que llegan desde admin.js al rebotar al usuario --- */
+      const motivo = new URLSearchParams(window.location.search).get('motivo');
+      if (motivo === 'sesion') {
+        mostrarMensaje('Tu sesión expiró o no has iniciado sesión. Ingresa de nuevo.');
+      } else if (motivo === 'permisos') {
+        mostrarMensaje('Esa cuenta no tiene permisos administrativos.');
+      }
+
+      /* --- Si ya hay sesión admin activa, entramos directo --- */
+      const sesion = await apiGet('sesion.php');
+      if (sesion.exito && ROLES_PERMITIDOS.includes(sesion.datos.rol)) {
+        window.location.href = 'index.html';
+        return;
+      }
+
+      /* --- Envío del formulario --- */
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        limpiarMensaje();
+
+        const email = document.getElementById('adminLoginEmail').value.trim();
+        const password = document.getElementById('adminLoginPassword').value;
+
+        // Validación propia por si validaciones.js no cargó
+        const emailValido = (typeof validarEmail === 'function')
+          ? validarEmail(email)
+          : /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+        if (!emailValido) {
+          mostrarMensaje('Ingresa un correo electrónico válido.');
+          return;
+        }
+        if (password === '') {
+          mostrarMensaje('Ingresa tu contraseña.');
+          return;
+        }
+
+        const btn = document.getElementById('btnIngresar');
+        btn.disabled = true;
+        btn.innerHTML = '<i class="bi bi-hourglass-split"></i> Verificando...';
+
+        const respuesta = await apiPost('login.php', { email, password });
+
+        btn.disabled = false;
+        btn.innerHTML = '<i class="bi bi-box-arrow-in-right"></i> Ingresar al panel';
+
+        if (!respuesta.exito) {
+          // El backend responde genérico a propósito: no revela
+          // si falló el correo o la contraseña.
+          mostrarMensaje(respuesta.mensaje || 'Correo o contraseña incorrectos.');
+          return;
+        }
+
+        // Credenciales correctas, pero ¿tiene permisos de panel?
+        if (!ROLES_PERMITIDOS.includes(respuesta.datos.rol)) {
+          // Cerramos la sesión recién abierta: un cliente no debe
+          // quedar logueado desde la puerta administrativa.
+          await apiPost('logout.php', {});
+          mostrarMensaje('Esta cuenta no tiene permisos administrativos.');
+          return;
+        }
+
+        mostrarMensaje('Acceso concedido. Redirigiendo...', true);
+        setTimeout(() => window.location.href = 'index.html', 800);
+      });
+    });
+  </script>
+</body>
+</html>

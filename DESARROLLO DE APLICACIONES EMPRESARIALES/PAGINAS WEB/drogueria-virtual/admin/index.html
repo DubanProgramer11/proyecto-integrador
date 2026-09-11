@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Panel Administrativo VitalFarma</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body class="admin-body">
+
+  <div class="admin-layout">
+
+
+    <!-- CONTENIDO -->
+    <div>
+      <header class="admin-topbar">
+        <h1 class="admin-topbar__titulo">Dashboard</h1>
+        <div class="admin-topbar__usuario">
+          <div>
+            <div id="adminNombre" style="font-weight:600;">Cargando...</div>
+            <span class="admin-topbar__rol" id="adminRol"></span>
+          </div>
+          <div class="admin-topbar__avatar" id="adminAvatar">A</div>
+        </div>
+      </header>
+
+      <main class="admin-contenido">
+
+        <!-- FILTRO DE FECHAS -->
+        <div class="dash-filtros">
+          <div class="dash-filtro">
+            <label for="dashDesde">Desde</label>
+            <input type="date" id="dashDesde">
+          </div>
+          <div class="dash-filtro">
+            <label for="dashHasta">Hasta</label>
+            <input type="date" id="dashHasta">
+          </div>
+          <div class="dash-filtros__acciones">
+            <button class="dash-btn dash-btn--claro" id="dashLimpiar">
+              <i class="bi bi-x-circle"></i> Limpiar
+            </button>
+            <button class="dash-btn dash-btn--primario" id="dashAplicar">
+              <i class="bi bi-arrow-clockwise"></i> Actualizar
+            </button>
+          </div>
+        </div>
+
+        <!-- MÉTRICAS -->
+        <div class="admin-stats-grid">
+          <div class="admin-stat-card">
+            <div class="admin-stat-card__icono admin-stat-card__icono--teal"><i class="bi bi-cash-coin"></i></div>
+            <div>
+              <div class="admin-stat-card__valor" id="statVentas">$ 0</div>
+              <div class="admin-stat-card__etiqueta">Ventas del periodo</div>
+              <div class="admin-stat-card__pie" id="statTicket">Ticket promedio: $ 0</div>
+            </div>
+          </div>
+          <div class="admin-stat-card">
+            <div class="admin-stat-card__icono admin-stat-card__icono--verde"><i class="bi bi-box-seam"></i></div>
+            <div>
+              <div class="admin-stat-card__valor" id="statPedidos">0</div>
+              <div class="admin-stat-card__etiqueta">Pedidos totales</div>
+              <div class="admin-stat-card__pie" id="statPedidosPeriodo">0 en el periodo</div>
+            </div>
+          </div>
+          <div class="admin-stat-card">
+            <div class="admin-stat-card__icono admin-stat-card__icono--azul"><i class="bi bi-people"></i></div>
+            <div>
+              <div class="admin-stat-card__valor" id="statClientes">0</div>
+              <div class="admin-stat-card__etiqueta">Clientes registrados</div>
+              <div class="admin-stat-card__pie" id="statClientesNuevos">0 nuevos</div>
+            </div>
+          </div>
+          <div class="admin-stat-card">
+            <div class="admin-stat-card__icono admin-stat-card__icono--naranja"><i class="bi bi-capsule"></i></div>
+            <div>
+              <div class="admin-stat-card__valor" id="statProductos">0</div>
+              <div class="admin-stat-card__etiqueta">Productos en catálogo</div>
+              <div class="admin-stat-card__pie" id="statOrdenes">0 órdenes médicas</div>
+            </div>
+          </div>
+          <div class="admin-stat-card">
+            <div class="admin-stat-card__icono admin-stat-card__icono--morado"><i class="bi bi-star-fill"></i></div>
+            <div>
+              <div class="admin-stat-card__valor" id="statCalificacion">0</div>
+              <div class="admin-stat-card__etiqueta">Calificación promedio</div>
+              <div class="admin-stat-card__pie" id="statCalificacionTotal">0 calificaciones</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GRÁFICAS -->
+        <div class="dash-grid-graficas">
+          <div class="admin-panel">
+            <div class="admin-panel__cabecera">
+              <h2 class="admin-panel__titulo">Ventas por día</h2>
+              <span style="font-size:0.78rem; color:var(--color-texto-suave);">Sin pedidos cancelados</span>
+            </div>
+            <div class="dash-lienzo">
+              <canvas id="graficaVentas"></canvas>
+            </div>
+            <div id="ventasVacio" style="display:none;" class="dash-vacio">
+              <i class="bi bi-bar-chart-line"></i>
+              No hay ventas registradas en este periodo.
+            </div>
+          </div>
+
+          <div class="admin-panel">
+            <div class="admin-panel__cabecera">
+              <h2 class="admin-panel__titulo">Pedidos por estado</h2>
+            </div>
+            <div class="dash-lienzo">
+              <canvas id="graficaEstados"></canvas>
+            </div>
+            <div id="estadosVacio" style="display:none;" class="dash-vacio">
+              <i class="bi bi-pie-chart"></i>
+              Todavía no hay pedidos.
+            </div>
+          </div>
+        </div>
+
+        <!-- SEGUNDA FILA DE GRÁFICAS -->
+        <div class="dash-grid-graficas">
+          <div class="admin-panel">
+            <div class="admin-panel__cabecera">
+              <h2 class="admin-panel__titulo">Órdenes médicas por estado</h2>
+            </div>
+            <div class="dash-lienzo dash-lienzo--bajo">
+              <canvas id="graficaOrdenes"></canvas>
+            </div>
+            <div id="ordenesVacio" style="display:none;" class="dash-vacio">
+              <i class="bi bi-clipboard2-x"></i>
+              No hay órdenes médicas cargadas.
+            </div>
+          </div>
+
+          <div class="admin-panel">
+            <div class="admin-panel__cabecera">
+              <h2 class="admin-panel__titulo">Satisfacción del cliente</h2>
+            </div>
+            <div class="dash-lienzo dash-lienzo--bajo">
+              <canvas id="graficaCalificaciones"></canvas>
+            </div>
+            <div id="calificacionesVacio" style="display:none;" class="dash-vacio">
+              <i class="bi bi-emoji-neutral"></i>
+              Aún no hay calificaciones.
+            </div>
+          </div>
+        </div>
+
+        <!-- TABLAS -->
+        <div class="dash-grid-tablas">
+          <div class="admin-panel">
+            <div class="admin-panel__cabecera">
+              <h2 class="admin-panel__titulo">Pedidos recientes</h2>
+              <a href="pages/pedidos.html" class="seccion__ver-todo" style="font-size:0.82rem;">Ver todos →</a>
+            </div>
+            <div id="tablaRecientes">
+              <div class="dash-cargando"><span class="dash-spinner"></span> Cargando...</div>
+            </div>
+          </div>
+
+          <div class="admin-panel">
+            <div class="admin-panel__cabecera">
+              <h2 class="admin-panel__titulo">Productos más vendidos</h2>
+            </div>
+            <div id="topProductos">
+              <div class="dash-cargando"><span class="dash-spinner"></span> Cargando...</div>
+            </div>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Chart.js por CDN. Si vas a sustentar sin internet, descarga
+       el archivo y cámbialo por una ruta local (ver nota abajo). -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <script src="../js/api.js"></script>
+  <script src="js/admin.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

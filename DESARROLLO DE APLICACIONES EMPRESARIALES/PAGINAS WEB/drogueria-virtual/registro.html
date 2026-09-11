@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crear cuenta - VitalFarma</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/auth.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <div class="auth-wrapper">
+
+    <!-- PANEL DEL FORMULARIO -->
+    <div class="auth-panel">
+      <div class="auth-panel__contenido">
+
+        <div class="auth-idioma-slot" data-idioma-slot></div>
+
+        <a href="index.html" class="auth-panel__logo">Vital<span>Farma</span></a>
+
+        <h1 class="auth-panel__titulo" data-i18n="registro_titulo">Crea tu cuenta</h1>
+        <p class="auth-panel__subtitulo" data-i18n="registro_subtitulo">Regístrate para comprar y seguir tus pedidos.</p>
+
+        <!-- Sin data-i18n: los mensajes los escribe auth.js -->
+        <div class="auth-mensaje-general" id="registroMensaje"></div>
+
+        <form class="auth-form" id="formRegistro" novalidate>
+          <div class="auth-campo">
+            <label for="registroNombre" data-i18n="nombre_completo">Nombre completo</label>
+            <input type="text" id="registroNombre" data-i18n="ph_nombre" placeholder="Ej: María Fernanda Gómez">
+            <span class="auth-campo__mensaje-error" id="errorRegistroNombre"></span>
+          </div>
+
+          <div class="auth-campo">
+            <label for="registroEmail" data-i18n="correo_electronico">Correo electrónico</label>
+            <input type="email" id="registroEmail" data-i18n="ph_correo" placeholder="tucorreo@ejemplo.com">
+            <span class="auth-campo__mensaje-error" id="errorRegistroEmail"></span>
+          </div>
+
+          <div class="auth-campo">
+            <label for="registroTelefono" data-i18n="telefono">Teléfono</label>
+            <input type="tel" id="registroTelefono" data-i18n="ph_telefono" placeholder="Ej: 3001234567">
+            <span class="auth-campo__mensaje-error" id="errorRegistroTelefono"></span>
+          </div>
+
+          <div class="auth-campo">
+            <label for="registroPassword" data-i18n="contrasena">Contraseña</label>
+            <div class="auth-campo__password-wrapper">
+              <input type="password" id="registroPassword" data-i18n="ph_min8" placeholder="Mínimo 8 caracteres">
+              <button type="button" class="auth-campo__toggle-password">👁️</button>
+            </div>
+            <div class="auth-fuerza" id="fuerzaPassword">
+              <div class="auth-fuerza__barra"></div>
+              <div class="auth-fuerza__barra"></div>
+              <div class="auth-fuerza__barra"></div>
+              <div class="auth-fuerza__barra"></div>
+            </div>
+            <!-- Sin data-i18n: el texto de fuerza lo escribe validaciones.js -->
+            <span class="auth-fuerza__texto" id="fuerzaPasswordTexto"></span>
+            <span class="auth-campo__mensaje-error" id="errorRegistroPassword"></span>
+          </div>
+
+          <div class="auth-campo">
+            <label for="registroConfirmar" data-i18n="confirmar_password">Confirmar contraseña</label>
+            <input type="password" id="registroConfirmar" data-i18n="ph_repite" placeholder="Repite tu contraseña">
+            <span class="auth-campo__mensaje-error" id="errorRegistroConfirmar"></span>
+          </div>
+
+          <!-- El texto va en un <span> aparte para no borrar el checkbox,
+               y usa data-i18n-html porque contiene un enlace -->
+          <label class="auth-checkbox">
+            <input type="checkbox" id="registroTerminos">
+            <span data-i18n-html="terminos_html">Acepto los <a href="#" style="color:var(--color-primario); font-weight:600;">términos y condiciones</a> y el tratamiento de mis datos.</span>
+          </label>
+
+          <button type="submit" class="btn btn-primario" data-i18n="crear_cuenta">Crear cuenta</button>
+        </form>
+
+        <p class="auth-footer-link" data-i18n-html="ya_tienes_cuenta_html">
+          ¿Ya tienes cuenta? <a href="login.html">Inicia sesión aquí</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- PANEL VISUAL -->
+    <div class="auth-visual">
+      <div class="auth-visual__contenido">
+        <div class="auth-visual__icono">🩺</div>
+        <h2 class="auth-visual__titulo" data-i18n="registro_visual_titulo">Únete a VitalFarma</h2>
+        <p class="auth-visual__texto" data-i18n="registro_visual_texto">Crea tu cuenta y disfruta de todos los beneficios.</p>
+        <ul class="auth-visual__lista">
+          <li data-i18n="registro_visual_1">📦 Seguimiento de tus pedidos</li>
+          <li data-i18n="registro_visual_2">📋 Sube tus órdenes médicas</li>
+          <li data-i18n="registro_visual_3">⭐ Guarda tus productos favoritos</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/idioma.js"></script>
+  <script src="js/validaciones.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

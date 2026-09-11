@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis direcciones - VitalFarma</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/main.css">
+  <link rel="stylesheet" href="../../css/header.css">
+  <link rel="stylesheet" href="../../css/responsive.css">
+  <link rel="stylesheet" href="../css/user.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+  <header class="header">
+    <div class="contenedor header__contenido">
+      <a href="../../index.html" class="header__logo">
+        <span class="header__logo-marca"><i class="bi bi-plus-lg"></i></span>
+        <span class="header__logo-texto">Vital<span>Farma</span></span>
+      </a>
+
+      <div class="header__buscador">
+        <i class="bi bi-search header__buscador-icono"></i>
+        <input type="text" data-i18n="buscar_placeholder" placeholder="Buscar productos, marcas, categorías...">
+      </div>
+
+      <div class="header__acciones">
+        <!-- Sin data-i18n: main.js reemplaza el contenido con la inicial del usuario -->
+        <a href="../../login.html" class="header__icono" id="headerCuenta"
+           data-i18n-title="mi_cuenta" title="Mi cuenta"><i class="bi bi-person"></i></a>
+        <!-- Sin data-i18n: contiene el contador del carrito -->
+        <a href="../../pages/carrito.html" class="header__icono"
+           data-i18n-title="carrito" title="Carrito">
+          <i class="bi bi-bag"></i>
+          <span class="header__carrito-contador">0</span>
+        </a>
+        <button class="header__menu-toggle" id="menuToggle"><i class="bi bi-list"></i></button>
+      </div>
+    </div>
+    <nav class="nav">
+      <div class="contenedor">
+        <ul class="nav__lista" id="navLista">
+          <li><a href="../../pages/catalogo.html" class="nav__link" data-i18n="catalogo">Catálogo</a></li>
+          <li><a href="../../pages/orden-medica.html" class="nav__link nav__link--destacado" data-i18n="subir_orden">Subir orden médica</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- CONTENIDO -->
+  <section class="contenedor user-layout">
+
+        <!-- SIDEBAR -->
+    <aside class="user-sidebar">
+      <div class="user-sidebar__perfil">
+        <!-- Sin data-i18n: user.js escribe la inicial, el nombre y el correo -->
+        <div class="user-sidebar__avatar" id="sidebarAvatar">U</div>
+        <div>
+          <div class="user-sidebar__nombre" id="sidebarNombre">Cargando...</div>
+          <div class="user-sidebar__email" id="sidebarEmail"></div>
+        </div>
+      </div>
+      <nav class="user-sidebar__nav">
+        <!-- El icono va aparte del <span>: data-i18n sobre el <a> lo borraría -->
+        <a href="../index.html" class="user-sidebar__link">
+          <i class="bi bi-house-door"></i><span data-i18n="resumen">Resumen</span>
+        </a>
+        <a href="perfil.html" class="user-sidebar__link">
+          <i class="bi bi-person"></i><span data-i18n="mi_perfil">Mi perfil</span>
+        </a>
+        <a href="direcciones.html" class="user-sidebar__link">
+          <i class="bi bi-geo-alt"></i><span data-i18n="mis_direcciones">Mis direcciones</span>
+        </a>
+        <a href="pedidos.html" class="user-sidebar__link">
+          <i class="bi bi-box-seam"></i><span data-i18n="mis_pedidos">Mis pedidos</span>
+        </a>
+        <a href="historial.html" class="user-sidebar__link">
+          <i class="bi bi-clock-history"></i><span data-i18n="historial">Historial</span>
+        </a>
+        <a href="ordenes-medicas.html" class="user-sidebar__link">
+          <i class="bi bi-clipboard2-pulse"></i><span data-i18n="ordenes_medicas">Órdenes médicas</span>
+        </a>
+        <a href="calificar.html" class="user-sidebar__link">
+          <i class="bi bi-star"></i><span data-i18n="calificar_atencion">Calificar atención</span>
+        </a>
+      </nav>
+      <button class="user-sidebar__logout" id="btnCerrarSesion">
+        <i class="bi bi-box-arrow-right"></i><span data-i18n="cerrar_sesion">Cerrar sesión</span>
+      </button>
+    </aside>
+
+    <!-- DIRECCIONES -->
+    <div class="user-panel">
+      <h1 class="user-panel__titulo" data-i18n="dir_titulo">Mis direcciones</h1>
+      <p class="user-panel__subtitulo" data-i18n="dir_subtitulo">Administra tus direcciones de entrega.</p>
+
+      <div class="direcciones-layout">
+
+        <!-- LISTA (la llena direcciones.js) -->
+        <div id="direccionesLista"></div>
+
+        <!-- FORMULARIO -->
+        <div class="user-panel" style="padding: var(--espacio-lg);">
+          <!-- Sin data-i18n: direcciones.js cambia este título al editar -->
+          <h3 id="direccionFormTitulo" style="margin-bottom: var(--espacio-md); font-size: 1rem;">Agregar nueva dirección</h3>
+          <input type="hidden" id="direccionId">
+
+          <form class="user-form" id="formDireccion">
+            <div>
+              <label for="direccionEtiqueta" data-i18n="dir_etiqueta">Etiqueta</label>
+              <!-- El value NO se traduce: es lo que se guarda en la base de datos -->
+              <select id="direccionEtiqueta">
+                <option value="Casa" data-i18n="dir_casa">Casa</option>
+                <option value="Trabajo" data-i18n="dir_trabajo">Trabajo</option>
+                <option value="Otro" data-i18n="dir_otro">Otro</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="direccionTexto" data-i18n="dir_direccion">Dirección</label>
+              <input type="text" id="direccionTexto" data-i18n="ph_dir_direccion" placeholder="Calle 45 # 12-30">
+            </div>
+
+            <div class="user-form__fila-doble">
+              <div>
+                <label for="direccionCiudad" data-i18n="dir_ciudad">Ciudad</label>
+                <input type="text" id="direccionCiudad" data-i18n="ph_dir_ciudad" placeholder="Bucaramanga">
+              </div>
+              <div>
+                <label for="direccionBarrio" data-i18n="dir_barrio">Barrio</label>
+                <input type="text" id="direccionBarrio" data-i18n="ph_dir_barrio" placeholder="Cabecera">
+              </div>
+            </div>
+
+            <div>
+              <label for="direccionReferencia" data-i18n="dir_referencia">Referencia (opcional)</label>
+              <input type="text" id="direccionReferencia" data-i18n="ph_dir_referencia" placeholder="Casa esquinera, portón azul">
+            </div>
+
+            <div>
+              <label for="direccionTelefono" data-i18n="dir_telefono">Teléfono de contacto</label>
+              <input type="tel" id="direccionTelefono" data-i18n="ph_dir_telefono" placeholder="3001234567">
+            </div>
+
+            <!-- El data-i18n va en el <span>, nunca en el <label>: borraría el checkbox -->
+            <label style="display:flex; align-items:center; gap:8px; font-size:0.85rem; font-weight:500;">
+              <input type="checkbox" id="direccionPredeterminada" style="width:auto;">
+              <span data-i18n="dir_predeterminada">Marcar como predeterminada</span>
+            </label>
+
+            <div style="display:flex; gap: var(--espacio-sm);">
+              <button type="submit" class="btn btn-primario" style="flex:1;" data-i18n="dir_guardar">Guardar dirección</button>
+              <button type="button" id="direccionCancelarEdicion" class="btn btn-secundario" style="display:none;" data-i18n="dir_cancelar">Cancelar</button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <script src="../../js/api.js"></script>
+  <script src="../../js/idioma.js"></script>
+  <script src="../../js/carrito.js"></script>
+  <script src="../../js/main.js"></script>
+  <script src="../js/user.js"></script>
+  <script src="../js/direcciones.js"></script>
+</body>
+</html>

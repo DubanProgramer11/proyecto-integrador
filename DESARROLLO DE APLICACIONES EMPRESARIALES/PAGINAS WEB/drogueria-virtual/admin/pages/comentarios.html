@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comentarios - Panel Administrativo VitalFarma</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/main.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="admin-body">
+
+  <div class="admin-layout">
+   
+
+    <div>
+      <header class="admin-topbar">
+        <h1 class="admin-topbar__titulo">Comentarios, quejas y sugerencias</h1>
+        <div class="admin-topbar__usuario">
+          <div><div id="adminNombre" style="font-weight:600;">Cargando...</div><span class="admin-topbar__rol" id="adminRol"></span></div>
+          <div class="admin-topbar__avatar" id="adminAvatar">A</div>
+        </div>
+      </header>
+
+      <main class="admin-contenido">
+        <div class="admin-panel">
+          <div class="admin-tabla-wrapper">
+            <table class="admin-tabla">
+              <thead><tr><th>Cliente</th><th>Tipo</th><th>Mensaje</th><th>Fecha</th><th>Estado</th></tr></thead>
+              <tbody id="comentariosTabla"></tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/admin.js"></script>
+  <script src="../../js/api.js"></script>
+  <script src="../js/comentarios-admin.js"></script>
+  <script src="../../js/idioma.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => inicializarTablaComentarios(null));
+  </script>
+</body>
+</html>
